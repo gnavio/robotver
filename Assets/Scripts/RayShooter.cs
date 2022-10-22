@@ -11,7 +11,7 @@ public class RayShooter : MonoBehaviour
     {
         _camera = GetComponent<Camera>();
 
-        Cursor.lockState = CursorLockMode.Locked; // deja el ratón en el centro de la ventana
+        Cursor.lockState = CursorLockMode.Locked; // deja el ratï¿½n en el centro de la ventana
         Cursor.visible = false;
     }
     void Update()
@@ -56,11 +56,11 @@ public class RayShooter : MonoBehaviour
     
 
         void OnGUI()
-    { // se ejecuta después de dibujar el frame del juego
+    { // se ejecuta despuï¿½s de dibujar el frame del juego
         int size = 12;
         float posX = _camera.pixelWidth / 2 - size / 4;
         float posY = _camera.pixelHeight / 2 - size / 2;
-        GUI.Label(new Rect(posX, posY, size, size), "*"); // puede mostrar texto e imágenes
+        GUI.Label(new Rect(posX, posY, size, size), "*"); // puede mostrar texto e imï¿½genes
     }
 
 }
