@@ -8,8 +8,13 @@ public class FPSInput : MonoBehaviour
     public float gravity = -9.8f;
     public float jumpForce;
     private float ySpeed;
+    private float zSpeed;
     private CharacterController _charController; 
-    bool jumped = false;
+    private bool jumped = false;
+
+    //Impulso
+    public float velocidadImpulsoHorizontal;
+    public float velocidadImpulsoVertical;
 
     void Start()
     {
@@ -29,10 +34,19 @@ public class FPSInput : MonoBehaviour
             {
                 jumped = true;
             }
-        } else { ySpeed += gravity * Time.deltaTime; }
-        
+            // Impulso
+            if (Input.GetMouseButtonDown(1)) { // Click derecho
+                ySpeed = velocidadImpulsoVertical;
+                zSpeed = velocidadImpulsoHorizontal;
+            }
+        } else 
+        { 
+            ySpeed += gravity * Time.deltaTime; 
+            movement.z = -zSpeed;
+        }
         movement.y = ySpeed;
-        _charController.Move(movement * Time.deltaTime); // no movemos el transform para que se calculen
+        
+         _charController.Move(movement * Time.deltaTime); // no movemos el transform para que se calculen
     }
 
     private void FixedUpdate()
@@ -41,8 +55,13 @@ public class FPSInput : MonoBehaviour
         {
             jumped = false;
             ySpeed = gravity * Time.deltaTime;
-            ySpeed = jumpForce;
+            ySpeed = jumpForce;            
         }
+    }
+    
+    //Impulso
+    private void Impulse() {
+        
     }
 }
 
