@@ -11,7 +11,6 @@ public class ReactiveTarget : MonoBehaviour
         {
             behavior.SetAlive(false);
         }
-
         StartCoroutine(Die());
     }
     private IEnumerator Die()
@@ -20,4 +19,5 @@ public class ReactiveTarget : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }
+    
 }
