@@ -6,7 +6,12 @@ using UnityEngine;
 public class RayShooter : MonoBehaviour
 {
     [SerializeField] public GameObject HitPrefab;
+    public int balas = 6;
     private Camera _camera;
+
+    [Header("Tecla")]
+    [SerializeField] KeyCode ReloadKey = KeyCode.R;
+
     void Start()
     {
         _camera = GetComponent<Camera>();
@@ -16,7 +21,12 @@ public class RayShooter : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(ReloadKey) && balas < 6)
+        {
+            balas = 6;
+        }
+
+        if (Input.GetMouseButtonDown(0) && balas >= 1)
         {
             Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
             Ray ray = _camera.ScreenPointToRay(point);
@@ -24,7 +34,7 @@ public class RayShooter : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 //Debug.Log("Hit " + hit.point + " (" + hit.transform.gameObject.name + ")");
-
+                balas--;
                 GameObject hitObject = hit.transform.gameObject;
                 ReactiveTarget targetAI = hitObject.GetComponent<ReactiveTarget>();
                 ExplodeTarget target = hitObject.GetComponent<ExplodeTarget>();

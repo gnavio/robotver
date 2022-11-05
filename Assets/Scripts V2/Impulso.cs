@@ -6,7 +6,7 @@ public class Impulso : MonoBehaviour
 {
     Rigidbody m_Rigidbody;
     [SerializeField] Transform orientation;
-
+    
     public int cartuchos = 3;
     public float dash = 20f;
 
@@ -25,5 +25,10 @@ public class Impulso : MonoBehaviour
             m_Rigidbody.AddForce(orientation.forward * -1 * dash);
             cartuchos -= 1;
         }
+    }
+
+    public void SumarCartucho(int x)
+    {
+        cartuchos += x;
     }
 }
