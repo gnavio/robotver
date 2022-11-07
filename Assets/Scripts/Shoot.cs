@@ -12,8 +12,6 @@ public class Shoot : MonoBehaviour
     public Transform gunBase;
     float rotSpeed = 2;
     float speed = 15;
-    float moveSpeed = 3;
-    float imunes = 0;
     // Start is called before the first frame update
     void Start()
     {
