@@ -9,6 +9,10 @@ public class ExplodeTarget : MonoBehaviour
 
     public void ReactToHit()
     {
+        GameObject EnemySpawnerObject = GameObject.Find("EnemySpawner");
+        EnemySpawner spawnerScript = EnemySpawnerObject.GetComponent<EnemySpawner>();
+        spawnerScript.SpawnNewEnemy();
+
         StartCoroutine(Die());
     }
 
@@ -16,9 +20,21 @@ public class ExplodeTarget : MonoBehaviour
     {
         GameObject DieParticle = Instantiate(EnemyExplode);
         DieParticle.transform.position = transform.position;
-        gameObject.SetActive(false);
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<SphereCollider>().enabled = false;
         yield return new WaitForSeconds(1);
         Destroy(DieParticle);
         Destroy(gameObject);
+    }
+
+    void Update()
+    {
+        if (GameObject.Find("Botonera").GetComponent<Botonera>() != null)
+        {
+            if (GameObject.Find("Botonera").GetComponent<Botonera>().jugando == false)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

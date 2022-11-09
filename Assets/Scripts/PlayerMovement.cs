@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     float playerHeight = 2f;
 
+    [SerializeField] Animator anim;
+
     [SerializeField] Transform orientation;
 
     [Header("Movement")]
@@ -37,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask groundMask;
    // [SerializeField] float groundDistance = 0.2f;
     public bool isGrounded { get; private set; }
+    public bool aterrizado = false;
 
     Vector3 moveDirection;
     Vector3 slopeMoveDirection;
@@ -69,6 +72,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
+        anim.SetFloat("Speed", Mathf.Abs(horizontalMovement) + Mathf.Abs(verticalMovement));
+        //Debug.Log(Mathf.Abs(horizontalMovement) + Mathf.Abs(verticalMovement));
+
         //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f);
@@ -77,6 +84,25 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         ControlDrag();
         ControlSpeed();
+
+        anim.SetBool("Aterrizar", false);
+
+        if (isGrounded && !aterrizado)
+        {
+            aterrizado = true;
+            anim.SetBool("Aterrizar", true);
+        }
+
+        if (!isGrounded)
+        {
+            aterrizado = false;
+            anim.SetBool("isGrounded", false);
+        }
+
+        if(isGrounded)
+        {
+            anim.SetBool("isGrounded", true);
+        }
 
         if (Input.GetKeyDown(jumpKey) && isGrounded)
         {
@@ -131,6 +157,8 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer();
     }
+
+   
 
     void MovePlayer()
     {

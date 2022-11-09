@@ -5,11 +5,13 @@ using UnityEngine;
 public class CartuchoItem : MonoBehaviour
 {
     public int cartuchosSumados = 1;
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject collectParticles;
     private Impulso impulso;
+
 
     void Start()
     {
+        GameObject player = GameObject.Find("Player");
         impulso = player.GetComponent<Impulso>();
     }
 
@@ -20,6 +22,11 @@ public class CartuchoItem : MonoBehaviour
             Debug.Log("Estamos dentro");
 
             impulso.SumarCartucho(cartuchosSumados);
+
+            GameObject CollectEffect = Instantiate(collectParticles);
+            CollectEffect.transform.position = GameObject.Find("Player").transform.position;
+            CollectEffect.transform.parent = GameObject.Find("Player").transform;
+
             Destroy(this.gameObject);
         }
 }
