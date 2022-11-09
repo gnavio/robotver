@@ -24,7 +24,11 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< HEAD
+  controlID: 12463
+=======
   controlID: 26030
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -45,10 +49,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
+    x: 2156
+    y: 73
+    width: 910
+    height: 651
+=======
     x: 214.6
     y: 19
     width: 1003.6
     height: 444.6
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -95,16 +106,32 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
+<<<<<<< HEAD
+      width: 910
+      height: 630
+    m_Scale: {x: 0.47395834, y: 0.47395834}
+    m_Translation: {x: 455, y: 315}
+=======
       width: 1003.6
       height: 423.6
     m_Scale: {x: 0.99999994, y: 0.99999994}
     m_Translation: {x: 501.8, y: 211.8}
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
+      x: -960
+      y: -664.61536
+      width: 1920
+      height: 1329.2307
+    m_MinimalGUI: 1
+  m_defaultScale: 0.47395834
+  m_LastWindowPixelSize: {x: 910, y: 651}
+=======
       x: -501.80002
       y: -211.80002
       width: 1003.60004
@@ -112,6 +139,7 @@ MonoBehaviour:
     m_MinimalGUI: 1
   m_defaultScale: 0.99999994
   m_LastWindowPixelSize: {x: 1254.5, y: 555.75}
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 00000000000000000000
@@ -136,12 +164,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
+    width: 1532
+    height: 947
+  m_MinSize: {x: 300, y: 200}
+  m_MaxSize: {x: 24288, y: 16192}
+  vertical: 1
+  controlID: 12464
+=======
     width: 1219.2
     height: 730.8
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
   controlID: 26031
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -161,12 +198,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
+    width: 1532
+    height: 672
+  m_MinSize: {x: 300, y: 100}
+  m_MaxSize: {x: 24288, y: 8096}
+  vertical: 0
+  controlID: 12465
+=======
     width: 1219.2
     height: 571.2
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
   controlID: 26001
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -184,10 +230,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
+    width: 379
+    height: 672
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+=======
     width: 213.6
     height: 571.2
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -213,10 +266,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
+    x: 1536
+    y: 73
+    width: 378
+    height: 651
+=======
     x: 0
     y: 73.6
     width: 212.6
     height: 550.2
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -226,7 +286,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
+      m_ExpandedIDs: bef1ffff5875000068750000ac750000
+=======
       m_ExpandedIDs: f8c6fdff52d2fdff30d3fdff90d4fdff50d7fdff6cd7fdff8ad7fdff0addfdffdcddfdff1cdffdffcab2ffff08b6ffffbac0000016c10000a0050100d6050100e0050100580601008e060100e4060100fc06010026070100
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -265,10 +329,17 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
+    x: 379
+    y: 0
+    width: 241
+    height: 672
+=======
     x: 213.6
     y: 0
     width: 1005.6
     height: 571.2
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 2}
@@ -299,10 +370,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
+    x: 1915
+    y: 73
+    width: 239
+    height: 651
+=======
     x: 213.6
     y: 73.6
     width: 1003.6
     height: 550.2
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -312,8 +390,13 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
+<<<<<<< HEAD
+      snapOffset: {x: 0, y: 0}
+      snapOffsetDelta: {x: -101, y: -26}
+=======
       snapOffset: {x: -100, y: -25.600006}
       snapOffsetDelta: {x: 0, y: -0.000030517578}
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -367,7 +450,11 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
+<<<<<<< HEAD
+      snapOffset: {x: 44.5, y: 86}
+=======
       snapOffset: {x: 26, y: 86}
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Orientation
@@ -504,9 +591,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
+    m_Target: {x: 20.21259, y: 1.6719369, z: -1.5338078}
+    speed: 2
+    m_Value: {x: 20.21259, y: 1.6719369, z: -1.5338078}
+=======
     m_Target: {x: -21.908892, y: 4.3680925, z: 18.67822}
     speed: 2
     m_Value: {x: -21.908892, y: 4.3680925, z: 18.67822}
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -553,6 +646,15 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< HEAD
+    m_Target: {x: -0.033369355, y: 0.86867183, z: -0.060361568, w: -0.49101844}
+    speed: 2
+    m_Value: {x: -0.0333619, y: 0.8684778, z: -0.060348086, w: -0.49090877}
+  m_Size:
+    m_Target: 4.5713086
+    speed: 2
+    m_Value: 4.5713086
+=======
     m_Target: {x: -0.13328685, y: -0.42858535, z: 0.064291134, w: -0.8914507}
     speed: 2
     m_Value: {x: -0.13326897, y: -0.42852783, z: 0.06428251, w: -0.8913311}
@@ -560,6 +662,7 @@ MonoBehaviour:
     m_Target: 14.622358
     speed: 2
     m_Value: 14.622358
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -604,6 +707,20 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
+    x: 620
+    y: 0
+    width: 912
+    height: 672
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 2}
+  m_Panes:
+  - {fileID: 2}
+  - {fileID: 10}
+  m_Selected: 0
+  m_LastSelected: 1
+=======
     x: 1821
     y: 73
     width: 1077
@@ -648,6 +765,7 @@ MonoBehaviour:
   m_CurrentEditor: 0
   m_LayerEditor:
     m_SelectedLayerIndex: 0
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -657,6 +775,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
+  m_Script: {fileID: 12914, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Animator
+    m_Image: {fileID: -1673928668082335149, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 2156
+    y: 73
+    width: 910
+    height: 651
+=======
   m_Script: {fileID: 12111, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -672,10 +807,50 @@ MonoBehaviour:
     y: 73.6
     width: 1003.6
     height: 444.6
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
+<<<<<<< HEAD
+  m_ViewTransforms:
+    m_KeySerializationHelper:
+    - {fileID: -5284116615170176922, guid: 97c10f48e1b637b41b05b2bad9032d9e, type: 2}
+    m_ValueSerializationHelper:
+    - e00: 0.9219423
+      e01: 0
+      e02: 0
+      e03: -605.9159
+      e10: 0
+      e11: 0.9219423
+      e12: 0
+      e13: 220.48137
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  m_PreviewAnimator: {fileID: 0}
+  m_AnimatorController: {fileID: 9100000, guid: 97c10f48e1b637b41b05b2bad9032d9e, type: 2}
+  m_BreadCrumbs:
+  - m_Target: {fileID: -5284116615170176922, guid: 97c10f48e1b637b41b05b2bad9032d9e, type: 2}
+    m_ScrollPosition: {x: 0, y: 0}
+  stateMachineGraph: {fileID: 0}
+  stateMachineGraphGUI: {fileID: 0}
+  blendTreeGraph: {fileID: 0}
+  blendTreeGraphGUI: {fileID: 0}
+  m_AutoLiveLink: 1
+  m_MiniTool: 0
+  m_LockTracker:
+    m_IsLocked: 0
+  m_CurrentEditor: 1
+  m_LayerEditor:
+    m_SelectedLayerIndex: 0
+=======
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -692,9 +867,15 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
+    y: 672
+    width: 1532
+    height: 275
+=======
     y: 571.2
     width: 1219.2
     height: 159.59998
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_MinSize: {x: 230, y: 250}
   m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 12}
@@ -702,7 +883,11 @@ MonoBehaviour:
   - {fileID: 12}
   - {fileID: 13}
   m_Selected: 0
+<<<<<<< HEAD
+  m_LastSelected: 2
+=======
   m_LastSelected: 1
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -723,10 +908,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
+    x: 1536
+    y: 745
+    width: 1531
+    height: 254
+=======
     x: 0
     y: 644.8
     width: 1218.2
     height: 138.59998
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -744,22 +936,29 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Materials
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\CARPETAS\UPV\4o\DeV\Robover\GitHub\robotver
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: ac7c0000
+    m_LastClickedID: 31916
+    m_ExpandedIDs: 00000000947c0000ac7c000000ca9a3b
+=======
     scrollPos: {x: 0, y: 51.80002}
     m_SelectedIDs: 02c00000
     m_LastClickedID: 49154
     m_ExpandedIDs: 0000000002c0000016c0000000ca9a3b
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -787,7 +986,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
+    m_ExpandedIDs: 00000000947c000000ca9a3b
+=======
     m_ExpandedIDs: 0000000002c0000016c0000000ca9a3b
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -812,10 +1015,17 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< HEAD
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000c0c70000246a00000000000086700000a67a00000a6b00005e6b0000
+=======
     m_SelectedInstanceIDs: 0ac8fbff
     m_LastClickedInstanceID: -276470
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000c0c70000246a000000000000
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -879,6 +1089,40 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+<<<<<<< HEAD
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12071, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Animation
+    m_Image: {fileID: -8166618308981325432, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 1536
+    y: 745
+    width: 1536
+    height: 254
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  m_LockTracker:
+    m_IsLocked: 0
+  m_LastSelectedObjectID: 30266
+--- !u!114 &15
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+=======
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: InspectorWindow
@@ -886,6 +1130,15 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
+    x: 1532
+    y: 0
+    width: 388
+    height: 947
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 16}
+=======
     x: 1219.2
     y: 0
     width: 316.80005
@@ -893,6 +1146,7 @@ MonoBehaviour:
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_Panes:
   - {fileID: 15}
   - {fileID: 16}
@@ -918,10 +1172,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
+    x: 3068
+    y: 73
+    width: 387
+    height: 926
+=======
     x: 1219.2001
     y: 73.6
     width: 315.80005
     height: 709.8
+>>>>>>> parent of 4aa0091 (Animaciones y Minijuego)
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -929,7 +1190,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 151
+    m_CachedPref: 225
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -276470
