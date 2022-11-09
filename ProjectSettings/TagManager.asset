@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Wall
   - Impacto
+  - Bullet
   layers:
   - Default
   - TransparentFX
