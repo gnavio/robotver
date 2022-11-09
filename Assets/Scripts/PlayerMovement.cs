@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jumping")]
     public float jumpForce = 5f;
 
+    [Header("CheckPoint")]
+    public static Vector3 lastCheckPointPosition = new(20, 5, 10);
+
     [Header("Keybinds")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode sprintKey = KeyCode.LeftShift;
@@ -158,7 +161,11 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer();
     }
 
-   
+    private void Awake()
+    {
+        transform.position = lastCheckPointPosition;
+    }
+
 
     void MovePlayer()
     {
