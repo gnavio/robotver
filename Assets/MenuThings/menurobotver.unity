@@ -487,7 +487,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "ATR\xC1S"
+  m_text: BACK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c74d248c81f9dc845a6741bbaac1128a, type: 2}
   m_sharedMaterial: {fileID: 2667915586574100429, guid: c74d248c81f9dc845a6741bbaac1128a, type: 2}
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "CR\xC9DITOS"
+  m_text: CREDITS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c74d248c81f9dc845a6741bbaac1128a, type: 2}
   m_sharedMaterial: {fileID: 2667915586574100429, guid: c74d248c81f9dc845a6741bbaac1128a, type: 2}
@@ -1277,7 +1277,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 71.267, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447148557
 MonoBehaviour:
@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: JUGAR
+  m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c74d248c81f9dc845a6741bbaac1128a, type: 2}
   m_sharedMaterial: {fileID: 2667915586574100429, guid: c74d248c81f9dc845a6741bbaac1128a, type: 2}
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SALIR
+  m_text: Exit Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c74d248c81f9dc845a6741bbaac1128a, type: 2}
   m_sharedMaterial: {fileID: 2667915586574100429, guid: c74d248c81f9dc845a6741bbaac1128a, type: 2}
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "CR\xC9DITOS"
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c74d248c81f9dc845a6741bbaac1128a, type: 2}
   m_sharedMaterial: {fileID: 2667915586574100429, guid: c74d248c81f9dc845a6741bbaac1128a, type: 2}

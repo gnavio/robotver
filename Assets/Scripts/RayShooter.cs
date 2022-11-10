@@ -61,7 +61,7 @@ public class RayShooter : MonoBehaviour
                 StartCoroutine(ShotOverlay());
 
                 GameObject hitObject = hit.transform.gameObject;
-                ReactiveTarget targetAI = hitObject.GetComponent<ReactiveTarget>();
+                AIExplode targetAI = hitObject.GetComponent<AIExplode>();
                 ExplodeTarget target = hitObject.GetComponent<ExplodeTarget>();
 
 
