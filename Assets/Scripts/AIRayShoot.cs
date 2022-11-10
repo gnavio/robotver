@@ -12,11 +12,13 @@ public class AIRayShoot : MonoBehaviour
     public Transform gunBase;
     float rotSpeed = 2;
     float speed = 15;
+    private bool isReachable;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(waiter());
         player = GameObject.FindGameObjectWithTag("Player");
+        isReachable = false;
 
     }
     void CreateBullet()
@@ -33,10 +35,10 @@ public class AIRayShoot : MonoBehaviour
             Vector3 direction = (player.transform.position - this.transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lookRotation, Time.deltaTime * rotSpeed);
-
-            
+            isReachable = true;
             gunBase.transform.LookAt(player.transform.position);
         }
+        else isReachable = false;
     }
 
     IEnumerator waiter()
@@ -44,7 +46,10 @@ public class AIRayShoot : MonoBehaviour
         
         for (int i = 0; i < 100; i++)
         {
-            CreateBullet();
+            if (isReachable)
+            {
+                CreateBullet();
+            }
             yield return new WaitForSecondsRealtime(BulletTime);
         }
         
