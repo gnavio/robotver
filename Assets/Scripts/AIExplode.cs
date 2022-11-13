@@ -9,12 +9,12 @@ public class AIExplode : MonoBehaviour
 
     public void ReactToHit()
     {
-        Debug.Log("recibeImpacto");
         StartCoroutine(Die());
     }
 
     private IEnumerator Die()
     {
+        SumaKilledEnemies();
         GameObject DieParticle = Instantiate(EnemyExplode);
         DieParticle.transform.position = transform.position;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
@@ -23,5 +23,15 @@ public class AIExplode : MonoBehaviour
         yield return new WaitForSeconds(1);
         Destroy(DieParticle);
         Destroy(gameObject);
+    }
+
+    void SumaKilledEnemies()
+    {
+        if (GameObject.Find("Canvas").GetComponent<Timer>() != null)
+        {
+            GameObject.Find("Canvas").GetComponent<Timer>().killedEnemies += 1;
+        }
+
+        //Debug.Log("Hemos sumado enemigo");
     }
 }

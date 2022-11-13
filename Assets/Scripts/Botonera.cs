@@ -27,7 +27,7 @@ public class Botonera : MonoBehaviour
                 interactOverlay.SetActive(false);
 
                 //Resetea Puntuación
-                GameObject.Find("Canvas").GetComponent<Timer>().score = 0;
+                GameObject.Find("Canvas").GetComponent<TimerCampoTiro>().score = 0;
             }
         }
     }
