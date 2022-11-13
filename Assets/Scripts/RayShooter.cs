@@ -30,67 +30,69 @@ public class RayShooter : MonoBehaviour
 
     void Start()
     {
-
-        _camera = GetComponent<Camera>();
+         _camera = GetComponent<Camera>();
 
         Cursor.lockState = CursorLockMode.Locked; // deja el rat�n en el centro de la ventana
         Cursor.visible = false;
     }
     void Update()
     {
-        anim.SetBool("Dispara", false);
-
-        BalasUI();
-        ReloadOverlay();
-        
-        if (Input.GetKeyDown(ReloadKey) && balas < 6)
+        if(!PauseMenu.GameIsPaused)
         {
-            StartCoroutine(Reload()); 
-        }
+            anim.SetBool("Dispara", false);
 
-        if (Input.GetMouseButtonDown(0) && balas >= 1 && !reloading)
-        {
-            anim.SetBool("Dispara", true);
-            Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
-            Ray ray = _camera.ScreenPointToRay(point);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            BalasUI();
+            ReloadOverlay();
+            
+            if (Input.GetKeyDown(ReloadKey) && balas < 6)
             {
-                //Debug.Log("Hit " + hit.point + " (" + hit.transform.gameObject.name + ")");
-                balas--;
-                StartCoroutine(ShotOverlay());
+                StartCoroutine(Reload()); 
+            }
 
-                GameObject hitObject = hit.transform.gameObject;
-                AIExplode targetAI = hitObject.GetComponent<AIExplode>();
-                ExplodeTarget target = hitObject.GetComponent<ExplodeTarget>();
-
-
-
-                if (targetAI != null)
+            if (Input.GetMouseButtonDown(0) && balas >= 1 && !reloading)
+            {
+                anim.SetBool("Dispara", true);
+                Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
+                Ray ray = _camera.ScreenPointToRay(point);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
                 {
-                    targetAI.ReactToHit();
-                    Debug.Log("Take that!");
-                }
+                    //Debug.Log("Hit " + hit.point + " (" + hit.transform.gameObject.name + ")");
+                    balas--;
+                    StartCoroutine(ShotOverlay());
 
-                if (target != null) 
-                {
-                    GameObject.Find("Canvas").GetComponent<Timer>().timerActivado = true;
-                    GameObject.Find("Canvas").GetComponent<Timer>().score += GameObject.Find("Canvas").GetComponent<Timer>().killScoreBonus;
-                    //Debug.Log("BonusInstance");
-                    StartCoroutine(BonusOverlay());
+                    GameObject hitObject = hit.transform.gameObject;
+                    AIExplode targetAI = hitObject.GetComponent<AIExplode>();
+                    ExplodeTarget target = hitObject.GetComponent<ExplodeTarget>();
 
-                    target.ReactToHit();
-                    Debug.Log("Take that!");
-                }
 
-                else
-                {
-                    if (hit.transform.gameObject.CompareTag("Impacto") == false)
+
+                    if (targetAI != null)
                     {
-                        //StartCoroutine(SphereIndicator(hit.point));
-                        
-                        StartCoroutine(HitPrefabIndicator(hit));
-                        
+                        targetAI.ReactToHit();
+                        Debug.Log("Take that!");
+                    }
+
+                    if (target != null) 
+                    {
+                        GameObject.Find("Canvas").GetComponent<Timer>().timerActivado = true;
+                        GameObject.Find("Canvas").GetComponent<Timer>().score += GameObject.Find("Canvas").GetComponent<Timer>().killScoreBonus;
+                        //Debug.Log("BonusInstance");
+                        StartCoroutine(BonusOverlay());
+
+                        target.ReactToHit();
+                        Debug.Log("Take that!");
+                    }
+
+                    else
+                    {
+                        if (hit.transform.gameObject.CompareTag("Impacto") == false)
+                        {
+                            //StartCoroutine(SphereIndicator(hit.point));
+                            
+                            StartCoroutine(HitPrefabIndicator(hit));
+                            
+                        }
                     }
                 }
             }

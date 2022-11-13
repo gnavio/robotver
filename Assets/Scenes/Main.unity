@@ -4786,6 +4786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 323594428}
+  menuSceneName: menurobotver
 --- !u!1 &512037443
 GameObject:
   m_ObjectHideFlags: 0
