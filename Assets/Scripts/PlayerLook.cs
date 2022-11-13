@@ -29,15 +29,17 @@ public class PlayerLook : MonoBehaviour
 
     private void Update()
     {
-        mouseX = Input.GetAxisRaw("Mouse X");
-        mouseY = Input.GetAxisRaw("Mouse Y");
-         
-        yRotation += mouseX * sensX * multiplier;
-        xRotation -= mouseY * sensY * multiplier;
+        if(!PauseMenu.GameIsPaused) {
+            mouseX = Input.GetAxisRaw("Mouse X");
+            mouseY = Input.GetAxisRaw("Mouse Y");
+            
+            yRotation += mouseX * sensX * multiplier;
+            xRotation -= mouseY * sensY * multiplier;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, wallRun.tilt);
-        orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+            cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, wallRun.tilt);
+            orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+            }
     }
 }
