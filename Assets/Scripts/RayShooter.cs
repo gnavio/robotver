@@ -159,7 +159,8 @@ public class RayShooter : MonoBehaviour
         int size = 30;
         float posX = _camera.pixelWidth / 2 - size / 4;
         float posY = _camera.pixelHeight / 2 - size / 2;
-        GUI.Label(new Rect(posX, posY, size, size), mirilla); // puede mostrar texto e im�genes //"*"
+        
+        if(!reloading){ GUI.Label(new Rect(posX, posY, size, size), mirilla); } // puede mostrar texto e im�genes //"*"
     }
 
 
