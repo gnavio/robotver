@@ -66,23 +66,22 @@ public class RayShooter : MonoBehaviour
                     ExplodeTarget target = hitObject.GetComponent<ExplodeTarget>();
 
 
+                if (targetAI != null)
+                {
+                    targetAI.ReactToHit();
+                    //Debug.Log("Take that!");
+                }
 
-                    if (targetAI != null)
-                    {
-                        targetAI.ReactToHit();
-                        Debug.Log("Take that!");
-                    }
-
-                    if (target != null) 
-                    {
-                        GameObject.Find("Canvas").GetComponent<Timer>().timerActivado = true;
-                        GameObject.Find("Canvas").GetComponent<Timer>().score += GameObject.Find("Canvas").GetComponent<Timer>().killScoreBonus;
-                        //Debug.Log("BonusInstance");
-                        StartCoroutine(BonusOverlay());
-
+                if (target != null) 
+                {
+                    GameObject.Find("Canvas").GetComponent<TimerCampoTiro>().timerActivado = true;
+                    GameObject.Find("Canvas").GetComponent<TimerCampoTiro>().score += GameObject.Find("Canvas").GetComponent<TimerCampoTiro>().killScoreBonus;
+                    //Debug.Log("BonusInstance");
+                    StartCoroutine(BonusOverlay());
+                    
                         target.ReactToHit();
                         Debug.Log("Take that!");
-                    }
+                 }
 
                     else
                     {
