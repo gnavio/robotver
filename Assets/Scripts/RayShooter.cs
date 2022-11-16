@@ -30,40 +30,40 @@ public class RayShooter : MonoBehaviour
 
     void Start()
     {
-
-        _camera = GetComponent<Camera>();
+         _camera = GetComponent<Camera>();
 
         Cursor.lockState = CursorLockMode.Locked; // deja el rat�n en el centro de la ventana
         Cursor.visible = false;
     }
     void Update()
     {
-        anim.SetBool("Dispara", false);
-
-        BalasUI();
-        ReloadOverlay();
-        
-        if (Input.GetKeyDown(ReloadKey) && balas < 6)
+        if(!PauseMenu.GameIsPaused)
         {
-            StartCoroutine(Reload()); 
-        }
+            anim.SetBool("Dispara", false);
 
-        if (Input.GetMouseButtonDown(0) && balas >= 1 && !reloading)
-        {
-            anim.SetBool("Dispara", true);
-            Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
-            Ray ray = _camera.ScreenPointToRay(point);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            BalasUI();
+            ReloadOverlay();
+            
+            if (Input.GetKeyDown(ReloadKey) && balas < 6)
             {
-                //Debug.Log("Hit " + hit.point + " (" + hit.transform.gameObject.name + ")");
-                balas--;
-                StartCoroutine(ShotOverlay());
+                StartCoroutine(Reload()); 
+            }
 
-                GameObject hitObject = hit.transform.gameObject;
-                AIExplode targetAI = hitObject.GetComponent<AIExplode>();
-                ExplodeTarget target = hitObject.GetComponent<ExplodeTarget>();
+            if (Input.GetMouseButtonDown(0) && balas >= 1 && !reloading)
+            {
+                anim.SetBool("Dispara", true);
+                Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
+                Ray ray = _camera.ScreenPointToRay(point);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    //Debug.Log("Hit " + hit.point + " (" + hit.transform.gameObject.name + ")");
+                    balas--;
+                    StartCoroutine(ShotOverlay());
 
+                    GameObject hitObject = hit.transform.gameObject;
+                    AIExplode targetAI = hitObject.GetComponent<AIExplode>();
+                    ExplodeTarget target = hitObject.GetComponent<ExplodeTarget>();
 
 
                 if (targetAI != null)
@@ -78,19 +78,20 @@ public class RayShooter : MonoBehaviour
                     GameObject.Find("Canvas").GetComponent<TimerCampoTiro>().score += GameObject.Find("Canvas").GetComponent<TimerCampoTiro>().killScoreBonus;
                     //Debug.Log("BonusInstance");
                     StartCoroutine(BonusOverlay());
+                    
+                        target.ReactToHit();
+                        Debug.Log("Take that!");
+                 }
 
-                    target.ReactToHit();
-                    Debug.Log("Take that!");
-                }
-
-                else
-                {
-                    if (hit.transform.gameObject.CompareTag("Impacto") == false)
+                    else
                     {
-                        //StartCoroutine(SphereIndicator(hit.point));
-                        
-                        StartCoroutine(HitPrefabIndicator(hit));
-                        
+                        if (hit.transform.gameObject.CompareTag("Impacto") == false)
+                        {
+                            //StartCoroutine(SphereIndicator(hit.point));
+                            
+                            StartCoroutine(HitPrefabIndicator(hit));
+                            
+                        }
                     }
                 }
             }
@@ -157,7 +158,8 @@ public class RayShooter : MonoBehaviour
         int size = 30;
         float posX = _camera.pixelWidth / 2 - size / 4;
         float posY = _camera.pixelHeight / 2 - size / 2;
-        GUI.Label(new Rect(posX, posY, size, size), mirilla); // puede mostrar texto e im�genes //"*"
+        
+        if(!reloading){ GUI.Label(new Rect(posX, posY, size, size), mirilla); } // puede mostrar texto e im�genes //"*"
     }
 
 

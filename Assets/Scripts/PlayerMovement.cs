@@ -75,44 +75,46 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-
-        anim.SetFloat("Speed", Mathf.Abs(horizontalMovement) + Mathf.Abs(verticalMovement));
-        //Debug.Log(Mathf.Abs(horizontalMovement) + Mathf.Abs(verticalMovement));
-
-        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f);
-        //print(isGrounded);
-
-        MyInput();
-        ControlDrag();
-        ControlSpeed();
-
-        anim.SetBool("Aterrizar", false);
-
-        if (isGrounded && !aterrizado)
+        if(!PauseMenu.GameIsPaused) 
         {
-            aterrizado = true;
-            anim.SetBool("Aterrizar", true);
-        }
+            anim.SetFloat("Speed", Mathf.Abs(horizontalMovement) + Mathf.Abs(verticalMovement));
+            //Debug.Log(Mathf.Abs(horizontalMovement) + Mathf.Abs(verticalMovement));
 
-        if (!isGrounded)
-        {
-            aterrizado = false;
-            anim.SetBool("isGrounded", false);
-        }
+            //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if(isGrounded)
-        {
-            anim.SetBool("isGrounded", true);
-        }
+            isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f);
+            //print(isGrounded);
 
-        if (Input.GetKeyDown(jumpKey) && isGrounded)
-        {
-            Jump();
-        }
+            MyInput();
+            ControlDrag();
+            ControlSpeed();
 
-        slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
+            anim.SetBool("Aterrizar", false);
+
+            if (isGrounded && !aterrizado)
+            {
+                aterrizado = true;
+                anim.SetBool("Aterrizar", true);
+            }
+
+            if (!isGrounded)
+            {
+                aterrizado = false;
+                anim.SetBool("isGrounded", false);
+            }
+
+            if(isGrounded)
+            {
+                anim.SetBool("isGrounded", true);
+            }
+
+            if (Input.GetKeyDown(jumpKey) && isGrounded)
+            {
+                Jump();
+            }
+
+            slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
+        }
     }
 
     void MyInput()
