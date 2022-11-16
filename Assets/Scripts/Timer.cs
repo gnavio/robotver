@@ -21,6 +21,7 @@ public class Timer : MonoBehaviour
     [HideInInspector] public bool timerActivado = false;
 
     [HideInInspector] public int killedEnemies = 0;
+    [SerializeField] public TMPro.TMP_Text killsText;
 
     public int requiredKills;
 
@@ -37,6 +38,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
+        SetKillsText();
 
         if (timerPrepActivado)
         {
@@ -93,6 +95,11 @@ public class Timer : MonoBehaviour
             }
         }
         
+    }
+
+    void SetKillsText()
+    {
+        killsText.text = killedEnemies + " / " + requiredKills;
     }
 }
 

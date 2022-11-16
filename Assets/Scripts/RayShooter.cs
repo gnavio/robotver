@@ -69,6 +69,7 @@ public class RayShooter : MonoBehaviour
                 if (targetAI != null)
                 {
                     targetAI.ReactToHit();
+                    StartCoroutine(BonusOverlay());
                     //Debug.Log("Take that!");
                 }
 
