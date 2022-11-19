@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11850155, g: 0.12485893, b: 0.112695456, a: 1}
+  m_IndirectSpecularColor: {r: 0.11850179, g: 0.12485893, b: 0.11269559, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8522,6 +8522,7 @@ GameObject:
   - component: {fileID: 950780593}
   - component: {fileID: 950780594}
   - component: {fileID: 950780595}
+  - component: {fileID: 950780596}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8666,6 +8667,25 @@ CapsuleCollider:
   m_Height: 2.1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &950780596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950780588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d816eddebea235b49805c4467310114e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 1781291236}
+  orientation: {fileID: 1781291233}
+  anim: {fileID: 939871241}
+  OverlayPrefab: {fileID: 3034606259377101513, guid: d4873ba7bf6edca45a7503b271d5ab71, type: 3}
+  overlayPos: {fileID: 758525018}
+  cartuchos: 3
+  DashKey: 116
 --- !u!4 &965588225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 748031474243973070, guid: 98ab0cf81c5a060419df7ba8c12447a3, type: 3}
