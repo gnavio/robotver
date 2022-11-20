@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Teletransporte : MonoBehaviour
 {
+    public GameObject bullet;
     Rigidbody m_Rigidbody;
     [SerializeField] private Camera _camera;
 
@@ -25,7 +26,6 @@ public class Teletransporte : MonoBehaviour
     void Update()
     {
         anim.SetBool("Impulso", false);
-
         if (Input.GetKeyDown(DashKey) && cartuchos >= 1) 
         {   
             Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
@@ -42,6 +42,7 @@ public class Teletransporte : MonoBehaviour
             Debug.Log("ImpulsoTrue");
             StartCoroutine(ImpulsoOverlay());
         }
+        
     }
 
     public void SumarCartucho(int x)
