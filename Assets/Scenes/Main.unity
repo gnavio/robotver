@@ -8521,6 +8521,7 @@ GameObject:
   - component: {fileID: 950780592}
   - component: {fileID: 950780593}
   - component: {fileID: 950780594}
+  - component: {fileID: 950780596}
   - component: {fileID: 950780595}
   m_Layer: 0
   m_Name: Player
@@ -8633,6 +8634,7 @@ MonoBehaviour:
   wallRunfovTime: 10
   camTilt: 10
   camTiltTime: 10
+  anim: {fileID: 939871241}
 --- !u!114 &950780594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8666,6 +8668,22 @@ CapsuleCollider:
   m_Height: 2.1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &950780596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950780588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d841759cb46f4444ad312f54489169c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 939871241}
+  CambiaHabKey: 113
+  changingHab: 0
+  habSelected: 0
 --- !u!4 &965588225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 748031474243973070, guid: 98ab0cf81c5a060419df7ba8c12447a3, type: 3}
@@ -14818,13 +14836,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 939871241}
   HitPrefab: {fileID: 8459220246457582245, guid: 69b6a7db29d206a42b2acdc76af01268, type: 3}
+  HitPrefabMorado: {fileID: 8459220246457582245, guid: 029afe3a8be74484ea6c0d0f8792290e, type: 3}
   overlayReload: {fileID: 1358334497}
   OverlayPrefab: {fileID: 3034606259377101513, guid: 4bca4a2fc5ff2ae46ac8946b2244aedc, type: 3}
+  OverlayPrefabMorado: {fileID: 3034606259377101513, guid: 0c81009da61caab4a87fdde34b50d4ef, type: 3}
   overlayPos: {fileID: 758525018}
   BonusPrefab: {fileID: 1844563757358008359, guid: b99e389b2a08ffd4d8bbb2d3a040a378, type: 3}
   mirilla: {fileID: 2800000, guid: 388725de885f03845a4a274c19505936, type: 3}
   balas: 6
   balasText: {fileID: 375578092}
+  reloading: 0
   ReloadKey: 114
 --- !u!1 &1785099119
 GameObject:
