@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Impacto
   - Bullet
+  - FirePoint
+  - BulletTP
   layers:
   - Default
   - TransparentFX

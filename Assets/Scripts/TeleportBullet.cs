@@ -4,49 +4,31 @@ using UnityEngine;
 
 public class TeleportBullet : MonoBehaviour
 {
-    [SerializeField] private Camera _camera;
     [Header("Tecla")]
     [SerializeField] KeyCode DashKey = KeyCode.T;
-    [SerializeField] float _InitialVelocity;
-    [SerializeField] float _Angle;
-    [SerializeField] float _gravity;
-    [SerializeField] LineRenderer _Line;
-    [SerializeField] float _Step;
-    [SerializeField] Transform _FirePoint;
-    public int cartuchos = 30;
-    private Ray ray;
+    [SerializeField] float maxTime;
+    private float currentTime;
 
-    private void Update()
+    private void Start()
     {
-        float angle = _Angle * Mathf.Deg2Rad;
-        DrawPath(_InitialVelocity, angle, _Step);
-        if (Input.GetKeyDown(DashKey) && cartuchos > 0)
-        {
-            Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
-            ray = _camera.ScreenPointToRay(point);
-            StopAllCoroutines();
-            StartCoroutine(Coroutine_Movement(_InitialVelocity, angle));
-        }
+        currentTime = 0f;
     }
 
-    private void DrawPath(float v0, float angle, float step)
+    /**
+    private void Update()
     {
-        step = Mathf.Max(0.01f, step);
-        float totalTime = 10;
-        _Line.positionCount = (int)(totalTime / step) + 2;
-        int count = 0;
-        for (float i = 0; i < totalTime; i += step)
+        
+        float angle = _Angle * Mathf.Deg2Rad;
+        Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
+        ray = _camera.ScreenPointToRay(point);
+        StopAllCoroutines();
+        StartCoroutine(Coroutine_Movement(_InitialVelocity, angle));
+        if (Input.GetKeyDown(DashKey))
         {
-            float x = v0 * i * Mathf.Cos(angle);
-            float y = v0 * i * Mathf.Sin(angle) - _gravity * -Physics.gravity.y * Mathf.Pow(i, 2);
-            float z = v0 * i * Mathf.Cos(angle);
-            _Line.SetPosition(count, _FirePoint.position + new Vector3(x, y, z));
-            count++;
+            //m_Rigidbody.position = hit.point;
+            Destroy(gameObject);
         }
-        float xfinal = v0 * totalTime * Mathf.Cos(angle);
-        float yfinal = v0 * totalTime * Mathf.Sin(angle) - _gravity * -Physics.gravity.y * Mathf.Pow(totalTime, 2);
-        float zfinal = v0 * totalTime * Mathf.Cos(angle);
-        _Line.SetPosition(count, _FirePoint.position + new Vector3(xfinal, yfinal, zfinal));
+        
     }
 
     IEnumerator Coroutine_Movement(float v0, float angle)
@@ -55,11 +37,33 @@ public class TeleportBullet : MonoBehaviour
         while (t < 100)
         {            
             float x = v0 * t * Mathf.Cos(angle) * ray.direction.x;
-            float y = v0 * t * Mathf.Sin(angle) - (1f / 2f) * -Physics.gravity.y * Mathf.Pow(t, 2) * ray.direction.y;
+            float y = v0 * t * Mathf.Sin(angle) - (1f / 2f) * -_gravity * Physics.gravity.y * Mathf.Pow(t, 2) * ray.direction.y;
             float z = v0 * t * Mathf.Cos(angle) * ray.direction.z;
             transform.position = _FirePoint.position + new Vector3(x, y, z);
             t += Time.deltaTime;
             yield return null;
         }
+    }
+    **/
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(DashKey) || currentTime >= maxTime)
+        {
+            Teleport();
+        }
+        currentTime += Time.deltaTime;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Teleport();
+    }
+
+    private void Teleport()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = transform.position + new Vector3(0, 0, 0);
+        Destroy(gameObject);
     }
 }

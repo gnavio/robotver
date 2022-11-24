@@ -5,15 +5,17 @@ using UnityEngine;
 public class Teletransporte : MonoBehaviour
 {
     public GameObject bullet;
+    public GameObject firePoint;
     Rigidbody m_Rigidbody;
     [SerializeField] private Camera _camera;
-
+    [SerializeField] private float yOffset;
+    [SerializeField] private float zOffset;
     [SerializeField] Transform orientation;
     [SerializeField] Animator anim;
     [SerializeField] public GameObject OverlayPrefab;
     [SerializeField] public GameObject overlayPos;
-
-    public int cartuchos = 30;
+    
+    public int cartuchos = 1;
 
     [Header("Tecla")]
     [SerializeField] KeyCode DashKey = KeyCode.T; //Añadir sistema para alternar entre Impulso y Teletransporte
@@ -25,36 +27,18 @@ public class Teletransporte : MonoBehaviour
 
     void Update()
     {
-        anim.SetBool("Impulso", false);
-        if (Input.GetKeyDown(DashKey) && cartuchos >= 1) 
-        {   
-            Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
-            Ray ray = _camera.ScreenPointToRay(point);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                m_Rigidbody.position = hit.point; //Teletransporte
-            }
-            
-            cartuchos -= 1;
-            anim.SetBool("Impulso", true);
-            Debug.Log("ImpulsoTrue");
-            StartCoroutine(ImpulsoOverlay());
+        GameObject game = GameObject.FindGameObjectWithTag("BulletTP");
+        if (game == null && Input.GetKeyDown(DashKey) && cartuchos > 0) 
+        {
+            GameObject teleportBullet = bullet;
+            teleportBullet = GameObject.Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+            teleportBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, yOffset, 0));
+            teleportBullet.GetComponent<Rigidbody>().AddForce(orientation.forward * zOffset);
         }
-        
     }
 
     public void SumarCartucho(int x)
     {
         cartuchos += x;
-    }
-
-    IEnumerator ImpulsoOverlay()
-    {
-        GameObject overlay = Instantiate(OverlayPrefab, overlayPos.transform.position, overlayPos.transform.rotation);
-        overlay.transform.parent = overlayPos.transform;
-        yield return new WaitForSeconds(1);
-        Destroy(overlay);
     }
 }
