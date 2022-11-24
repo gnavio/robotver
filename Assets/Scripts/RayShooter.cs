@@ -9,8 +9,10 @@ public class RayShooter : MonoBehaviour
 {
     [SerializeField] Animator anim;
     [SerializeField] public GameObject HitPrefab;
+    [SerializeField] public GameObject HitPrefabMorado;
     [SerializeField] public GameObject overlayReload;
     [SerializeField] public GameObject OverlayPrefab;
+    [SerializeField] public GameObject OverlayPrefabMorado;
     [SerializeField] public GameObject overlayPos;
     [SerializeField] public GameObject BonusPrefab;
 
@@ -21,9 +23,11 @@ public class RayShooter : MonoBehaviour
 
     private Camera _camera;
 
-    bool reloading = false;
+    [HideInInspector] public bool reloading = false;
 
     bool ocultaOverlay = false;
+
+    bool changingHab = false;
 
     [Header("Tecla")]
     [SerializeField] KeyCode ReloadKey = KeyCode.R;
@@ -36,9 +40,12 @@ public class RayShooter : MonoBehaviour
         Cursor.visible = false;
     }
     void Update()
-    {
-        if(!PauseMenu.GameIsPaused)
+    {  
+
+        if (!PauseMenu.GameIsPaused)
         {
+            changingHab = GameObject.Find("Player").GetComponent<ControlHabilidad>().changingHab;
+
             anim.SetBool("Dispara", false);
 
             BalasUI();
@@ -49,7 +56,7 @@ public class RayShooter : MonoBehaviour
                 StartCoroutine(Reload()); 
             }
 
-            if (Input.GetMouseButtonDown(0) && balas >= 1 && !reloading)
+            if (Input.GetMouseButtonDown(0) && balas >= 1 && !reloading &&!changingHab)
             {
                 anim.SetBool("Dispara", true);
                 Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
@@ -101,8 +108,19 @@ public class RayShooter : MonoBehaviour
 
     IEnumerator HitPrefabIndicator(RaycastHit hit)
     {
+        GameObject HitPrefabSelected;
+
+        if (GameObject.Find("Player").GetComponent<ControlHabilidad>().habSelected == 2)
+        {
+            HitPrefabSelected = HitPrefabMorado;
+        }
+        else
+        {
+            HitPrefabSelected = HitPrefab;
+        }
+
         GameObject InstanceHit = Instantiate(
-                HitPrefab,
+                HitPrefabSelected,
                 hit.point + (hit.normal * 0.1f),
                 Quaternion.FromToRotation(Vector3.up, hit.normal)
                 );
@@ -125,7 +143,18 @@ public class RayShooter : MonoBehaviour
 
     IEnumerator ShotOverlay()
     {
-        GameObject overlay = Instantiate(OverlayPrefab, overlayPos.transform.position, overlayPos.transform.rotation);
+        GameObject shotOverlaySelected;
+
+        if (GameObject.Find("Player").GetComponent<ControlHabilidad>().habSelected == 2)
+        {
+            shotOverlaySelected = OverlayPrefabMorado;
+        }
+        else
+        {
+            shotOverlaySelected = OverlayPrefab;
+        }
+
+        GameObject overlay = Instantiate(shotOverlaySelected, overlayPos.transform.position, overlayPos.transform.rotation);
         overlay.transform.parent = overlayPos.transform;
         yield return new WaitForSeconds(1);
         Destroy(overlay);
@@ -136,7 +165,7 @@ public class RayShooter : MonoBehaviour
     {
         anim.SetBool("Reloading", true);
         reloading = true;
-        yield return new WaitForSeconds(2.4f);
+        yield return new WaitForSeconds(1.7f);
         balas = 6;
         anim.SetBool("Reloading", false);
         reloading = false;
@@ -160,7 +189,7 @@ public class RayShooter : MonoBehaviour
         float posX = _camera.pixelWidth / 2 - size / 4;
         float posY = _camera.pixelHeight / 2 - size / 2;
         
-        if(!reloading){ GUI.Label(new Rect(posX, posY, size, size), mirilla); } // puede mostrar texto e im�genes //"*"
+        if(!reloading && !changingHab){ GUI.Label(new Rect(posX, posY, size, size), mirilla); } // puede mostrar texto e im�genes //"*"
     }
 
 

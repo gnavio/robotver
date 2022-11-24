@@ -25,6 +25,8 @@ public class WallRun : MonoBehaviour
 
     public float tilt { get; private set; }
 
+    [SerializeField] public Animator anim;
+
     private bool wallLeft = false;
     private bool wallRight = false;
 
@@ -78,6 +80,7 @@ public class WallRun : MonoBehaviour
 
     void StartWallRun()
     {
+        anim.SetBool("isWallrunning", true);
         rb.useGravity = false;
 
         rb.AddForce(Vector3.down * wallRunGravity, ForceMode.Force);
@@ -109,6 +112,7 @@ public class WallRun : MonoBehaviour
 
     void StopWallRun()
     {
+        anim.SetBool("isWallrunning", false);
         rb.useGravity = true;
 
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, wallRunfovTime * Time.deltaTime);
