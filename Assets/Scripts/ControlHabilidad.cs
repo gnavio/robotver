@@ -7,6 +7,7 @@ public class ControlHabilidad : MonoBehaviour
     [SerializeField] public Animator anim;
     [SerializeField] KeyCode CambiaHabKey = KeyCode.Q;
 
+
     [HideInInspector] public bool changingHab;
 
     int numHabilidades = 2;
@@ -14,6 +15,7 @@ public class ControlHabilidad : MonoBehaviour
     bool reloading;
 
     [HideInInspector] public int habSelected;
+    [SerializeField] AudioSource CambioHabAudio;
 
     void Start()
     {
@@ -30,10 +32,11 @@ public class ControlHabilidad : MonoBehaviour
     {
         anim.SetBool("CambioCartucho", false); // Por defecto desactivado, para que si más abajo lo activamos que se reproduzca la animación una sola vez
 
-        Debug.Log(habSelected);
+        //Debug.Log(habSelected);
 
         if (Input.GetKeyUp(CambiaHabKey) && !reloading)
         {
+            CambioHabAudio.Play(0);
             StartCoroutine(TiempoCambioHab()); // Para luego en el script de RayShooter cancelar poder disparar mientras cambia cartucho
             anim.SetBool("CambioCartucho", true);
 

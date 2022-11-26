@@ -16,6 +16,9 @@ public class RayShooter : MonoBehaviour
     [SerializeField] public GameObject overlayPos;
     [SerializeField] public GameObject BonusPrefab;
 
+    [SerializeField] AudioSource shotAudio;
+    [SerializeField] AudioSource reloadAudio;
+
     public Texture2D mirilla;
 
     public int balas = 6;
@@ -59,6 +62,7 @@ public class RayShooter : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && balas >= 1 && !reloading &&!changingHab)
             {
                 anim.SetBool("Dispara", true);
+                shotAudio.Play(0);
                 Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
                 Ray ray = _camera.ScreenPointToRay(point);
                 RaycastHit hit;
@@ -163,6 +167,7 @@ public class RayShooter : MonoBehaviour
 
     IEnumerator Reload()
     {
+        reloadAudio.Play(0);
         anim.SetBool("Reloading", true);
         reloading = true;
         yield return new WaitForSeconds(1.7f);
@@ -189,7 +194,7 @@ public class RayShooter : MonoBehaviour
         float posX = _camera.pixelWidth / 2 - size / 4;
         float posY = _camera.pixelHeight / 2 - size / 2;
         
-        if(!reloading && !changingHab){ GUI.Label(new Rect(posX, posY, size, size), mirilla); } // puede mostrar texto e im�genes //"*"
+        if(!reloading && !changingHab && !PauseMenu.GameIsPaused) { GUI.Label(new Rect(posX, posY, size, size), mirilla); } // puede mostrar texto e im�genes //"*"
     }
 
 
