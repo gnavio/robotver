@@ -7,7 +7,9 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenu;
+    public GameObject settingsMenu;
     public string menuSceneName = "menurobotver";
+    [SerializeField] AudioSource countdownAudio;
 
     // Update is called once per frame
     void Update()
@@ -26,8 +28,11 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenu.SetActive(false);
+        settingsMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+
+        countdownAudio.UnPause();
     }
 
     void Pause() 
@@ -35,7 +40,12 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        GameIsPaused = true; 
+
+        if (countdownAudio.isPlaying)
+        {
+            countdownAudio.Pause();
+        }
     }
 
     public void LoadMenu()
