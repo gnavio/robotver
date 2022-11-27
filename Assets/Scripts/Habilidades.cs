@@ -40,6 +40,7 @@ public class Habilidades : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
             int cambio = Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : -1;
+            if (cambio < 0) cambio = NUM_HABILIDADES - 1;
             posicion = (posicion + cambio) % NUM_HABILIDADES;
             Debug.Log("Cambio de posicion: " + posicion);
         }
