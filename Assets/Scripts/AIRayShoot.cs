@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AIRayShoot : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject bullet;
     public GameObject turret;
     private GameObject player;
