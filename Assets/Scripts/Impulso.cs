@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Impulso : MonoBehaviour
 {
-    Rigidbody m_Rigidbody;
     [SerializeField] Transform orientation;
     [SerializeField] Animator anim;
-    [SerializeField] public GameObject OverlayPrefab;
-    [SerializeField] public GameObject overlayPos;
+    [SerializeField] GameObject OverlayPrefab;
+    [SerializeField] GameObject overlayPos;
     [SerializeField] AudioSource BlasterAudio;
-
     public int cartuchos = 3;
     public float dash = 20f;
+    private Rigidbody m_Rigidbody;
 
     [Header("Tecla")]
     [SerializeField] KeyCode DashKey = KeyCode.Mouse1;
