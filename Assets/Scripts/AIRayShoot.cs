@@ -38,6 +38,7 @@ public class AIRayShoot : MonoBehaviour
             gunBase.transform.LookAt(player.transform.position);
         }
         else isReachable = false;
+
     }
 
     IEnumerator waiter()

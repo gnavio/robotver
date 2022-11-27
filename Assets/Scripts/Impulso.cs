@@ -9,6 +9,7 @@ public class Impulso : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] public GameObject OverlayPrefab;
     [SerializeField] public GameObject overlayPos;
+    [SerializeField] AudioSource BlasterAudio;
 
     public int cartuchos = 3;
     public float dash = 20f;
@@ -27,6 +28,7 @@ public class Impulso : MonoBehaviour
 
         if (Input.GetKeyDown(DashKey) && cartuchos >= 1) 
         {
+            BlasterAudio.Play(0);
             m_Rigidbody.AddForce(orientation.forward * -1 * dash);
             cartuchos -= 1;
             anim.SetBool("Impulso", true);

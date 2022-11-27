@@ -22,8 +22,10 @@ public class Timer : MonoBehaviour
 
     [HideInInspector] public int killedEnemies = 0;
     [SerializeField] public TMPro.TMP_Text killsText;
-
     public int requiredKills;
+
+    [SerializeField] AudioSource Music;
+
 
     void Start()
     {
@@ -40,7 +42,7 @@ public class Timer : MonoBehaviour
     {
         SetKillsText();
 
-        if (timerPrepActivado)
+        if (timerPrepActivado && !PauseMenu.GameIsPaused)
         {
             countdownPrepText.gameObject.SetActive(true);
             currentPrepTime -= 1 * Time.deltaTime;
@@ -50,6 +52,9 @@ public class Timer : MonoBehaviour
             if (currentPrepTime < 1)
             {
                 timerPrepActivado = false;
+
+                Music.Play(0);
+
                 timerActivado = true; // Activamos Timer Nivel
                 countdownPrepText.gameObject.SetActive(false);
                 currentPrepTime = startingPrepTime;
