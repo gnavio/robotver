@@ -10859,6 +10859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f9b3fb3cdc24b4aa5c9f88293d1199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impulso: 1
+  teletransporte: 1
   NUM_HABILIDADES: 2
   orientation: {fileID: 1781291233}
   anim: {fileID: 939871241}

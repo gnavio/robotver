@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class Habilidades : MonoBehaviour
 {
+    public readonly String IMPULSO = "Impulso"
+        , TELETRANSPORTE = "Teletransporte";
+
+    public bool impulso, teletransporte;
+    private String[] habilidades;
     private int posicion;
     public int NUM_HABILIDADES;
 
@@ -33,6 +38,7 @@ public class Habilidades : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         posicion = 0;
+        habilidades = new string[] { IMPULSO, TELETRANSPORTE};
     }
 
     void CambiarPosicion()
@@ -51,7 +57,7 @@ public class Habilidades : MonoBehaviour
     {
         CambiarPosicion();
         //Inicio Impulso
-        if (posicion == 0)
+        if (habilidades[posicion] == IMPULSO)
         {
             anim.SetBool("Impulso", false);
 
@@ -68,7 +74,7 @@ public class Habilidades : MonoBehaviour
         //Fin Impulso
 
         //Inicio Teletransporte
-        if (posicion == 1) { 
+        if (habilidades[posicion] == TELETRANSPORTE) { 
             GameObject game = GameObject.FindGameObjectWithTag("BulletTP");
             if (game == null && Input.GetKeyDown(DashKey) && cartuchosTeletransporte > 0)
             {
