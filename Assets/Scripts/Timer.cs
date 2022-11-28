@@ -6,7 +6,7 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    //Temporizador Preparación
+    //Temporizador Preparaciï¿½n
     float currentPrepTime;
     float startingPrepTime = 6f;
     [SerializeField] public TMPro.TMP_Text countdownPrepText;
@@ -23,6 +23,10 @@ public class Timer : MonoBehaviour
     [HideInInspector] public int killedEnemies = 0;
     [SerializeField] public TMPro.TMP_Text killsText;
     public int requiredKills;
+    
+    // Pantalla Nivel Completo
+    public static float finalTimeLevel;
+    GameManager gameManager;
 
     [SerializeField] AudioSource Music;
 
@@ -36,6 +40,9 @@ public class Timer : MonoBehaviour
         currentTime = startingTime;
 
         finalTimeText.gameObject.SetActive(false);
+
+        // Pantalla Nivel Completo
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -46,7 +53,7 @@ public class Timer : MonoBehaviour
         {
             countdownPrepText.gameObject.SetActive(true);
             currentPrepTime -= 1 * Time.deltaTime;
-            float currentPrepSecs = Mathf.FloorToInt(currentPrepTime % 60); // Conversión a segundos enteros
+            float currentPrepSecs = Mathf.FloorToInt(currentPrepTime % 60); // Conversiï¿½n a segundos enteros
             countdownPrepText.text = currentPrepSecs.ToString("0");
 
             if (currentPrepTime < 1)
@@ -78,10 +85,16 @@ public class Timer : MonoBehaviour
             currentTime -= 1 * Time.deltaTime;
             countdownText.text = currentTime.ToString("0.00");
 
-            // SI COMPLETAS LA MISIÓN...
+            // SI COMPLETAS LA MISIï¿½N...
             if (killedEnemies >= requiredKills)
             {
-                float finalTime = startingTime - currentTime;  
+                float finalTime = startingTime - currentTime; 
+                
+                //// Pantalla Nivel Completo ///////
+                finalTimeLevel = finalTime; 
+                gameManager.NivelCompleto();
+                ///////////////////////////////////
+                
                 countdownText.gameObject.SetActive(false); // desactivamos timer gameObject
 
                 finalTimeText.text = finalTime.ToString("0.00");
@@ -96,7 +109,7 @@ public class Timer : MonoBehaviour
                 countdownText.gameObject.SetActive(false);
                 currentTime = startingTime;
 
-                // AQUÍ HAY QUE PONER QUÉ PASA SI SE ACABA EL TIEMPO
+                // AQUï¿½ HAY QUE PONER QUï¿½ PASA SI SE ACABA EL TIEMPO
             }
         }
         
