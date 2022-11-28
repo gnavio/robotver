@@ -32,6 +32,7 @@ public class GameOver : MonoBehaviour
         gameOverMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsOver = false;
+        Cursor.visible = false;
         gameOverAudio.UnPause();
         
         // Reiniciar nivel actual
@@ -46,6 +47,7 @@ public class GameOver : MonoBehaviour
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsOver = true; 
+        Cursor.visible = true;
 
         if (gameOverAudio.isPlaying)
         {

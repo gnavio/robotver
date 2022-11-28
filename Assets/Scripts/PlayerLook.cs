@@ -29,7 +29,7 @@ public class PlayerLook : MonoBehaviour
 
     private void Update()
     {
-        if(!PauseMenu.GameIsPaused) {
+        if(!PauseMenu.GameIsPaused && !GameOver.GameIsOver) {
             mouseX = Input.GetAxisRaw("Mouse X");
             mouseY = Input.GetAxisRaw("Mouse Y");
             
