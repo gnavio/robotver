@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -878,6 +878,8 @@ MonoBehaviour:
   OverlayPrefabMorado: {fileID: 3034606259377101513, guid: 0c81009da61caab4a87fdde34b50d4ef, type: 3}
   overlayPos: {fileID: 1073852488}
   BonusPrefab: {fileID: 1844563757358008359, guid: b99e389b2a08ffd4d8bbb2d3a040a378, type: 3}
+  shotAudio: {fileID: 0}
+  reloadAudio: {fileID: 0}
   mirilla: {fileID: 2800000, guid: 388725de885f03845a4a274c19505936, type: 3}
   balas: 6
   balasText: {fileID: 775370982}
@@ -8603,6 +8605,7 @@ GameObject:
   - component: {fileID: 640604405}
   - component: {fileID: 640604404}
   - component: {fileID: 640604403}
+  - component: {fileID: 640604410}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8659,6 +8662,7 @@ MonoBehaviour:
   CambiaHabKey: 113
   changingHab: 0
   habSelected: 0
+  CambioHabAudio: {fileID: 0}
 --- !u!114 &640604405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8675,6 +8679,7 @@ MonoBehaviour:
   anim: {fileID: 811521385}
   OverlayPrefab: {fileID: 3034606259377101513, guid: d4873ba7bf6edca45a7503b271d5ab71, type: 3}
   overlayPos: {fileID: 1073852488}
+  BlasterAudio: {fileID: 0}
   cartuchos: 0
   dash: 1200
   DashKey: 324
@@ -8764,6 +8769,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &640604410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640604401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e54999380211cf4b8225c6f479f2751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &646245642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16703,6 +16720,7 @@ MonoBehaviour:
   killedEnemies: 0
   killsText: {fileID: 1514601388}
   requiredKills: 4
+  Music: {fileID: 0}
 --- !u!114 &1259361345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23801,7 +23819,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 952118806}
+  settingsMenu: {fileID: 0}
   menuSceneName: menurobotver
+  countdownAudio: {fileID: 0}
 --- !u!114 &1752799930
 MonoBehaviour:
   m_ObjectHideFlags: 0

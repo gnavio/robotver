@@ -7,8 +7,11 @@ public class OutOfBounds : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Player")
-        {
-            GameObject.FindGameObjectWithTag("Player").transform.position = PlayerMovement.lastCheckPointPosition;
+        {   
+            //Código antiguo (checkpoints)
+            //GameObject.FindGameObjectWithTag("Player").transform.position = PlayerMovement.lastCheckPointPosition;
+
+            
         }
     }
 }
