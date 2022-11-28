@@ -19,7 +19,7 @@ public class OutOfBounds : MonoBehaviour
             // Código antiguo (checkpoints)
             //GameObject.FindGameObjectWithTag("Player").transform.position = PlayerMovement.lastCheckPointPosition;
 
-            // Método GameOver de GameManager
+            // Método GameOver de GameManager (nuevo código)
             gameManager.GameOver();
         }
     }

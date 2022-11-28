@@ -8,11 +8,15 @@ public class GameManager : MonoBehaviour {
 
     Scene actualScene;
     string actualSceneName;
+    GameOver gameOver;
 
     void Start () 
     {
         actualScene = SceneManager.GetActiveScene();
         actualSceneName = actualScene.name;
+        GameObject canvasGameOver = GameObject.Find("CanvasGameOver");
+        gameOver = canvasGameOver.GetComponent<GameOver>();
+
     }
 
     void Update()
@@ -26,6 +30,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver()
     {
+        gameOver.ActiveGameOverMenu();
         SceneManager.LoadScene(actualSceneName);
     }
 }
