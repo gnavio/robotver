@@ -45,7 +45,7 @@ public class RayShooter : MonoBehaviour
     void Update()
     {  
 
-        if (!PauseMenu.GameIsPaused && !GameOver.GameIsOver)
+        if (!PauseMenu.GameIsPaused && !GameOver.GameIsOver && !NivelCompleto.GameIsOver)
         {
             changingHab = GameObject.Find("Player").GetComponent<ControlHabilidad>().changingHab;
 
@@ -194,7 +194,7 @@ public class RayShooter : MonoBehaviour
         float posX = _camera.pixelWidth / 2 - size / 4;
         float posY = _camera.pixelHeight / 2 - size / 2;
         
-        if(!reloading && !changingHab && !PauseMenu.GameIsPaused && !GameOver.GameIsOver) { GUI.Label(new Rect(posX, posY, size, size), mirilla); } // puede mostrar texto e im�genes //"*"
+        if(!reloading && !changingHab && !PauseMenu.GameIsPaused && !GameOver.GameIsOver && !NivelCompleto.GameIsOver) { GUI.Label(new Rect(posX, posY, size, size), mirilla); } // puede mostrar texto e im�genes //"*"
     }
 
 

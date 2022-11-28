@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     Scene actualScene;
     string actualSceneName;
     GameOver gameOver;
+    NivelCompleto nivelCompleto;
+    public string siguienteNivel;
 
     void Start () 
     {
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour {
         actualSceneName = actualScene.name;
         GameObject canvasGameOver = GameObject.Find("CanvasGameOver");
         gameOver = canvasGameOver.GetComponent<GameOver>();
+        GameObject canvasNivelCompleto = GameObject.Find("CanvasNivelCompleto");
+        nivelCompleto = canvasNivelCompleto.GetComponent<NivelCompleto>();
 
     }
 
@@ -31,5 +35,12 @@ public class GameManager : MonoBehaviour {
     public void GameOver()
     {
         gameOver.ActiveGameOverMenu();
+    }
+
+    public void NivelCompleto()
+    {   
+        // Nombre de la escena que contiene el siguiente nivel
+        nivelCompleto.siguienteNivel = siguienteNivel;
+        nivelCompleto.ActiveGameCompletedMenu();
     }
 }
