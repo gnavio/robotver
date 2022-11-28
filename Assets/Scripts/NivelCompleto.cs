@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class NivelCompleto : MonoBehaviour
 {
     public static bool GameIsOver = false;
     public GameObject gameCompletedMenu;
     public GameObject generalCanvasMenu;
+    [SerializeField] TextMeshProUGUI textoTiempo;
     Scene actualScene;
     string actualSceneName;
     [SerializeField] AudioSource gameOverAudio;
@@ -58,6 +60,7 @@ public class NivelCompleto : MonoBehaviour
 
     public void ActiveGameCompletedMenu() 
     {
+        textoTiempo.SetText(Timer.finalTimeLevel.ToString("0.00"));
         generalCanvasMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
         gameCompletedMenu.SetActive(true);

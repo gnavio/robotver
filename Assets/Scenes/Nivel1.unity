@@ -15385,6 +15385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCompletedMenu: {fileID: 1620372648}
   generalCanvasMenu: {fileID: 1827554807}
+  textoTiempo: {fileID: 1573825797}
   gameOverAudio: {fileID: 1660484112}
   siguienteNivel: Nivel2
 --- !u!114 &1463718858
