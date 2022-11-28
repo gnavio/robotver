@@ -7,6 +7,7 @@ public class GameOver : MonoBehaviour
 {
     public static bool GameIsOver = false;
     public GameObject gameOverMenu;
+    public GameObject generalCanvasMenu;
     Scene actualScene;
     string actualSceneName;
     [SerializeField] AudioSource gameOverAudio;
@@ -26,6 +27,7 @@ public class GameOver : MonoBehaviour
 
     public void TryAgain() 
     {
+        generalCanvasMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         gameOverMenu.SetActive(false);
         Time.timeScale = 1f;
@@ -39,6 +41,7 @@ public class GameOver : MonoBehaviour
 
     public void ActiveGameOverMenu() 
     {
+        generalCanvasMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
         gameOverMenu.SetActive(true);
         Time.timeScale = 0f;
