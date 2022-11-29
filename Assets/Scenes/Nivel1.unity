@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11850179, g: 0.12485893, b: 0.11269559, a: 1}
+  m_IndirectSpecularColor: {r: 0.1185012, g: 0.12485853, b: 0.11269529, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1548,7 +1548,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137176459}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10138,7 +10138,6 @@ GameObject:
   - component: {fileID: 950780594}
   - component: {fileID: 950780597}
   - component: {fileID: 950780598}
-  - component: {fileID: 950780599}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player

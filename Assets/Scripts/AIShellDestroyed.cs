@@ -8,22 +8,20 @@ public class AIShellDestroyed : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag != null)
+        if(col.gameObject.tag != null && col.gameObject.tag != "Enemy")
         {
             GameObject exp = Instantiate(explotion, this.transform.position, Quaternion.identity);
             Destroy(exp, 0.5f);
             Destroy(this.gameObject);
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (col.gameObject.tag == "Player")
+        {
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            GameObject exp = Instantiate(explotion, this.transform.position, Quaternion.identity);
+            Destroy(exp, 0.5f);
+            new WaitForSeconds(0.5f);
+            Destroy(this.gameObject);
+            gameManager.GameOver();
+        }
     }
 }
