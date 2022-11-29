@@ -5,16 +5,6 @@ using UnityEngine;
 
 public class Habilidades : MonoBehaviour
 {
-    public readonly String IMPULSO = "Impulso"
-        , TELETRANSPORTE = "Teletransporte"
-        , MOUSE_SCROLLWHEEL = "Mouse ScrollWheel";
-
-    public bool impulso, teletransporte;
-    private String[] habilidades;
-    private int posicion;
-    public int NUM_HABILIDADES;
-    private ControlHabilidad controlHabilidad;
-
     //Impulso
     [SerializeField] Transform orientation;
     [SerializeField] Animator anim;
@@ -39,11 +29,9 @@ public class Habilidades : MonoBehaviour
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        posicion = 0;
-        habilidades = new string[] { IMPULSO, TELETRANSPORTE};
-        controlHabilidad = new ControlHabilidad();
     }
 
+    /*
     void CambiarPosicion()
     {
         if (Input.GetAxis(MOUSE_SCROLLWHEEL) != 0)
@@ -57,6 +45,7 @@ public class Habilidades : MonoBehaviour
         }
     }
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -92,6 +81,7 @@ public class Habilidades : MonoBehaviour
         }
         //Fin Teletransporte
     }
+    */
 
     public void DispararImpulso()
     {
@@ -106,20 +96,18 @@ public class Habilidades : MonoBehaviour
             StartCoroutine(ImpulsoOverlay());
         }
     }
+    
 
     public void DispararTeletransporte()
     {
-        if (habilidades[posicion] == TELETRANSPORTE)
+        GameObject game = GameObject.FindGameObjectWithTag("BulletTP");
+        if (game == null && Input.GetKeyDown(DashKey) && cartuchosTeletransporte > 0)
         {
-            GameObject game = GameObject.FindGameObjectWithTag("BulletTP");
-            if (game == null && Input.GetKeyDown(DashKey) && cartuchosTeletransporte > 0)
-            {
-                cartuchosTeletransporte--;
-                GameObject teleportBullet = bullet;
-                teleportBullet = GameObject.Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-                teleportBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, yOffset, 0));
-                teleportBullet.GetComponent<Rigidbody>().AddForce(orientation.forward * zOffset);
-            }
+            cartuchosTeletransporte--;
+            GameObject teleportBullet = bullet;
+            teleportBullet = GameObject.Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+            teleportBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, yOffset, 0));
+            teleportBullet.GetComponent<Rigidbody>().AddForce(orientation.forward * zOffset);
         }
     }
 

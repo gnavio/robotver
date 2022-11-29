@@ -18,7 +18,7 @@ public class ControlHabilidad : MonoBehaviour
     {
         anim.SetBool("CambioCartucho", false); // Por defecto desactivado, para que si m?s abajo lo activamos que se reproduzca la animaci?n una sola vez
     }
-
+    /*
     void CambiaHabilidad()
     {
         anim.SetBool("CambioCartucho", false); // Por defecto desactivado, para que si m?s abajo lo activamos que se reproduzca la animaci?n una sola vez
@@ -53,18 +53,20 @@ public class ControlHabilidad : MonoBehaviour
             }
         }
     }
+    */
 
     IEnumerator TiempoCambioHab()
     {
+        changingHab = true;
         CambioHabAudio.Play(0);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
+        changingHab = false;
     }
 
     public void CambioBala(string antigua, string nueva)
     {
         if (!changingHab)
         {
-            changingHab = true;
             string luzAntigua = "", luzNueva = "";
             switch (antigua)
             {
@@ -92,7 +94,6 @@ public class ControlHabilidad : MonoBehaviour
             StartCoroutine(TiempoCambioHab());
             anim.SetBool(luzAntigua, false);
             anim.SetBool(luzNueva, true);
-            changingHab = false;
         }
     }
 }
