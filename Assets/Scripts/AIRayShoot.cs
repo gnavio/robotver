@@ -35,7 +35,7 @@ public class AIRayShoot : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lookRotation, Time.deltaTime * rotSpeed);
             isReachable = true;
-            gunBase.transform.LookAt(player.transform.position);
+            this.transform.LookAt(player.transform.position);
         }
         else isReachable = false;
 

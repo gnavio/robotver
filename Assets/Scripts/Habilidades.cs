@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Habilidades : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class Habilidades : MonoBehaviour
     [SerializeField] AudioSource BlasterAudio;
     public float dash = 20f;
     public int cartuchosImpulso;
+    [SerializeField] public TMPro.TMP_Text cartuchosImpulsoTxt;
     private Rigidbody m_Rigidbody;
     [Header("Tecla")]
     [SerializeField] KeyCode DashKey = KeyCode.Mouse1;
@@ -24,6 +27,7 @@ public class Habilidades : MonoBehaviour
     [SerializeField] private float yOffset;
     [SerializeField] private float zOffset;
     public int cartuchosTeletransporte;
+    [SerializeField] public TMPro.TMP_Text cartuchosTeletransporteTxt;
 
 
     void Start()
@@ -49,6 +53,10 @@ public class Habilidades : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Asociar variables de cartuchos a texto UI
+        cartuchosImpulsoTxt.text = cartuchosImpulso.ToString("0");
+        cartuchosTeletransporteTxt.text = cartuchosTeletransporte.ToString("0");
+
         CambiarPosicion();
         //Inicio Impulso
         if (habilidades[posicion] == IMPULSO)
