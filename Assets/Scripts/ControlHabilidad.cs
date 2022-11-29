@@ -95,5 +95,8 @@ public class ControlHabilidad : MonoBehaviour
             anim.SetBool(luzAntigua, false);
             anim.SetBool(luzNueva, true);
         }
+        else {
+            int x = 1;
+        }
     }
 }

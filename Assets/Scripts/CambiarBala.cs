@@ -8,7 +8,7 @@ public class CambiarBala : MonoBehaviour
     private Constantes constantes;
     private ControlHabilidad controlHabilidad;
     private Habilidades habilidad;
-    private String[] habilidades;
+    private String[] balas;
     private int posicion;
     private int NUM_HABILIDADES;
     private bool reloading;
@@ -17,10 +17,10 @@ public class CambiarBala : MonoBehaviour
     void Start()
     {
         constantes = new Constantes();
-        habilidades = new string[] { constantes.IMPULSO, constantes.TELETRANSPORTE };
+        balas = new string[] { constantes.IMPULSO, constantes.TELETRANSPORTE };
         habilidad = GetComponent<Habilidades>();
         controlHabilidad = GetComponent<ControlHabilidad>();
-        NUM_HABILIDADES = habilidades.Length;
+        NUM_HABILIDADES = balas.Length;
         posicion = 0;
     }
 
@@ -33,31 +33,28 @@ public class CambiarBala : MonoBehaviour
 
     void CambioBala()
     {
-        if (!controlHabilidad.changingHab)
+        controlHabilidad.NoHacerNada();
+        reloading = GameObject.Find("MainCamera").GetComponent<RayShooter>().reloading;
+        if (Input.GetAxis(constantes.MOUSE_SCROLLWHEEL) != 0 && !reloading)
         {
-            controlHabilidad.NoHacerNada();
-            reloading = GameObject.Find("MainCamera").GetComponent<RayShooter>().reloading;
-            if (Input.GetAxis(constantes.MOUSE_SCROLLWHEEL) != 0 && !reloading)
-            {
-                String antiguo = habilidades[posicion];
-                int cambio = Input.GetAxis(constantes.MOUSE_SCROLLWHEEL) > 0 ? 1 : -1;
-                if (cambio < 0) cambio = NUM_HABILIDADES - 1;
-                posicion = (posicion + cambio) % NUM_HABILIDADES;
-                String nuevo = habilidades[posicion];
-                controlHabilidad.CambioBala(antiguo, nuevo);
-            }
+            String antiguo = balas[posicion];
+            int cambio = Input.GetAxis(constantes.MOUSE_SCROLLWHEEL) > 0 ? 1 : -1;
+            if (cambio < 0) cambio = NUM_HABILIDADES - 1;
+            posicion = (posicion + cambio) % NUM_HABILIDADES;
+            String nuevo = balas[posicion];
+            controlHabilidad.CambioBala(antiguo, nuevo);
         }
     }
 
     void DispararBala()
     {
-        switch (habilidades[posicion])
+        switch (balas[posicion])
         {
             case "Impulso":
-                habilidad.Disparar(habilidades[posicion]);
+                habilidad.Disparar(balas[posicion]);
                 break;
             case "Teletransporte":
-                habilidad.Disparar(habilidades[posicion]);
+                habilidad.Disparar(balas[posicion]);
                 break;
             default:
                 throw new Exception("El string habilidad[posicion] no contiene ningún valor que corresponda a los tipos de bala");

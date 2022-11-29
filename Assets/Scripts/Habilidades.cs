@@ -83,7 +83,22 @@ public class Habilidades : MonoBehaviour
     }
     */
 
-    public void DispararImpulso()
+    public void Disparar(String balas)
+    {
+        switch (balas)
+        {
+            case "Impulso":
+                DispararImpulso();
+                break;
+            case "Teletransporte":
+                DispararTeletransporte();
+                break;
+            default:
+                throw new Exception("El string bala no contiene ningún valor que corresponda a los tipos de bala");
+        }
+    }
+
+    private void DispararImpulso()
     {
         anim.SetBool("Impulso", false);
         if (Input.GetKeyDown(DashKey) && cartuchosImpulso >= 1)
@@ -98,7 +113,7 @@ public class Habilidades : MonoBehaviour
     }
     
 
-    public void DispararTeletransporte()
+    private void DispararTeletransporte()
     {
         GameObject game = GameObject.FindGameObjectWithTag("BulletTP");
         if (game == null && Input.GetKeyDown(DashKey) && cartuchosTeletransporte > 0)
@@ -108,21 +123,6 @@ public class Habilidades : MonoBehaviour
             teleportBullet = GameObject.Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
             teleportBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, yOffset, 0));
             teleportBullet.GetComponent<Rigidbody>().AddForce(orientation.forward * zOffset);
-        }
-    }
-
-    public void Disparar(String balas)
-    {
-        switch (balas)
-        {
-            case "Impulso":
-                DispararImpulso();
-                break;
-            case "Teletransporte":
-                DispararTeletransporte();
-                break;
-            default:
-                throw new Exception("El string bala no contiene ningún valor que corresponda a los tipos de bala");
         }
     }
 
