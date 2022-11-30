@@ -5042,13 +5042,13 @@ Transform:
   - {fileID: 804297028}
   - {fileID: 1949522775}
   - {fileID: 1211334264}
+  - {fileID: 2039474062}
   - {fileID: 2068862523}
   - {fileID: 1487436570}
   - {fileID: 1765626239}
   - {fileID: 1552158563}
   - {fileID: 913772505}
   - {fileID: 2009886207}
-  - {fileID: 2039474062}
   - {fileID: 1478249995}
   - {fileID: 118021706}
   - {fileID: 1116313739}
@@ -6278,7 +6278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532211373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 1.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9706,7 +9706,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451166791}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!65 &913772506
 BoxCollider:
@@ -10184,7 +10184,7 @@ MonoBehaviour:
   walkSpeed: 8
   sprintSpeed: 12
   acceleration: 10
-  jumpForce: 7
+  jumpForce: 10
   jumpKey: 32
   sprintKey: 304
   groundDrag: 6
@@ -10351,8 +10351,10 @@ MonoBehaviour:
   _camera: {fileID: 1781291236}
   yOffset: 0
   zOffset: 2000
-  cartuchosTeletransporte: 3
+  cartuchosTeletransporte: 999
   cartuchosTeletransporteTxt: {fileID: 148161267}
+  TelepEffectPrefab: {fileID: 5119914425796568339, guid: 6aae554ca6e4a164c899e598902a0bc2, type: 3}
+  teleportEffect: 0
 --- !u!114 &950780599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10365,6 +10367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fa12647b3d74cfa8547fb6759cb8b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  habilidad: {fileID: 0}
+  balas: []
+  posicion: 0
   reloading: 0
   changing: 0
 --- !u!4 &965588225 stripped
@@ -10621,7 +10626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998488633}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.324268, y: -8.147611, z: -10.649768}
+  m_LocalPosition: {x: 21.324268, y: -7.51, z: -10.649768}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15758,7 +15763,7 @@ Transform:
   - {fileID: 200377167}
   - {fileID: 1369424217}
   m_Father: {fileID: 451166791}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1512929987
 GameObject:
@@ -18943,7 +18948,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451166791}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!65 &1765626240
 BoxCollider:
@@ -20666,7 +20671,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451166791}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2009886208
 BoxCollider:
@@ -21088,7 +21093,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451166791}
-  m_RootOrder: 12
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90.001, z: 90}
 --- !u!65 &2039474063
 BoxCollider:
@@ -21427,7 +21432,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 451166791}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2068862524
 MonoBehaviour:
@@ -22403,7 +22408,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1ba78152fe8c64c4099727211e297372, type: 2}
     - target: {fileID: 7794838478676467604, guid: 601cf1bed26614e0c96143b10fdf18ab, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7794838478676467604, guid: 601cf1bed26614e0c96143b10fdf18ab, type: 3}
       propertyPath: m_LocalPosition.x

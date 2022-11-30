@@ -7,9 +7,9 @@ public class CambiarBala : MonoBehaviour
 {
     private Constantes constantes;
     private ControlHabilidad controlHabilidad;
-    private Habilidades habilidad;
-    private String[] balas;
-    private int posicion;
+    public Habilidades habilidad;
+    public String[] balas;
+    public int posicion;
     private int NUM_HABILIDADES;
     public bool reloading, changing;
 

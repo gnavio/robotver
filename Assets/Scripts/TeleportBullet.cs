@@ -64,6 +64,7 @@ public class TeleportBullet : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = transform.position + new Vector3(0, 0, 0);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Habilidades>().teleportEffect = true;
         Destroy(gameObject);
     }
 }
