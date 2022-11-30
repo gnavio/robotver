@@ -7,14 +7,8 @@ using TMPro;
 
 public class Habilidades : MonoBehaviour
 {
-    public readonly String IMPULSO = "Impulso"
-        , TELETRANSPORTE = "Teletransporte";
-
-    public bool impulso, teletransporte;
-    private String[] habilidades;
-    private int posicion;
-    public int NUM_HABILIDADES;
-
+    private CambiarBala cambiarBala;
+    private ControlHabilidad controlHabilidad;
     //Impulso
     [SerializeField] Transform orientation;
     [SerializeField] Animator anim;
@@ -41,59 +35,55 @@ public class Habilidades : MonoBehaviour
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        posicion = 0;
-        habilidades = new string[] { IMPULSO, TELETRANSPORTE};
+        cambiarBala = GetComponent<CambiarBala>();
+        controlHabilidad = GetComponent<ControlHabilidad>();
     }
 
-    void CambiarPosicion()
+    public void Disparar(String balas)
     {
-        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        anim.SetBool("Impulso", false);
+        if (Input.GetKeyDown(DashKey) && !cambiarBala.changing
+            && !controlHabilidad.changingHab && !cambiarBala.reloading)
         {
-            int cambio = Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : -1;
-            if (cambio < 0) cambio = NUM_HABILIDADES - 1;
-            posicion = (posicion + cambio) % NUM_HABILIDADES;
-            Debug.Log("Cambio de posicion: " + posicion);
+            switch (balas)
+            {
+                case "Impulso":
+                    DispararImpulso();
+                    break;
+                case "Teletransporte":
+                    DispararTeletransporte();
+                    break;
+                default:
+                    throw new Exception("El string bala no contiene ningún valor que corresponda a los tipos de bala");
+            }
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void DispararImpulso()
     {
-        //Asociar variables de cartuchos a texto UI
-        cartuchosImpulsoTxt.text = cartuchosImpulso.ToString("0");
-        cartuchosTeletransporteTxt.text = cartuchosTeletransporte.ToString("0");
-
-        CambiarPosicion();
-        //Inicio Impulso
-        if (habilidades[posicion] == IMPULSO)
+        if (cartuchosImpulso >= 1)
         {
-            anim.SetBool("Impulso", false);
-
-            if (Input.GetKeyDown(DashKey) && cartuchosImpulso >= 1)
-            {
-                BlasterAudio.Play(0);
-                m_Rigidbody.AddForce(orientation.forward * -1 * dash);
-                cartuchosImpulso -= 1;
-                anim.SetBool("Impulso", true);
-                Debug.Log("ImpulsoTrue");
-                StartCoroutine(ImpulsoOverlay());
-            }
+            BlasterAudio.Play(0);
+            m_Rigidbody.AddForce(orientation.forward * -1 * dash);
+            cartuchosImpulso -= 1;
+            anim.SetBool("Impulso", true);
+            Debug.Log("ImpulsoTrue");
+            StartCoroutine(ImpulsoOverlay());
         }
-        //Fin Impulso
+    }
+    
 
-        //Inicio Teletransporte
-        if (habilidades[posicion] == TELETRANSPORTE) { 
-            GameObject game = GameObject.FindGameObjectWithTag("BulletTP");
-            if (game == null && Input.GetKeyDown(DashKey) && cartuchosTeletransporte > 0)
-            {
-                cartuchosTeletransporte--;
-                GameObject teleportBullet = bullet;
-                teleportBullet = GameObject.Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-                teleportBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, yOffset, 0));
-                teleportBullet.GetComponent<Rigidbody>().AddForce(orientation.forward * zOffset);
-            }
+    private void DispararTeletransporte()
+    {
+        GameObject game = GameObject.FindGameObjectWithTag("BulletTP");
+        if (game == null && cartuchosTeletransporte > 0)
+        {
+            cartuchosTeletransporte--;
+            GameObject teleportBullet = bullet;
+            teleportBullet = GameObject.Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+            teleportBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, yOffset, 0));
+            teleportBullet.GetComponent<Rigidbody>().AddForce(orientation.forward * zOffset);
         }
-        //Fin Teletransporte
     }
 
     public void SumarCartuchoImpulso(int x)

@@ -1,72 +1,67 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ControlHabilidad : MonoBehaviour
 {
+    private Constantes constantes = new Constantes();
+    private CambiarBala cambiarBala;
     [SerializeField] public Animator anim;
     [SerializeField] KeyCode CambiaHabKey = KeyCode.Q;
-
-
-    [HideInInspector] public bool changingHab;
-
-    int numHabilidades = 2;
-
-    bool reloading;
-
     [HideInInspector] public int habSelected;
     [SerializeField] AudioSource CambioHabAudio;
+    [HideInInspector] public bool changingHab;
 
     void Start()
     {
-        habSelected = 1;
+        cambiarBala = GetComponent<CambiarBala>();
     }
 
-    void Update()
+    public void NoHacerNada()
     {
-        reloading = GameObject.Find("MainCamera").GetComponent<RayShooter>().reloading;
-        CambiaHabilidad();
+        anim.SetBool("CambioCartucho", false); // Por defecto desactivado, para que si m?s abajo lo activamos que se reproduzca la animaci?n una sola vez
     }
 
-    void CambiaHabilidad()
+    public void CambioBala(string antigua, string nueva)
     {
-        anim.SetBool("CambioCartucho", false); // Por defecto desactivado, para que si más abajo lo activamos que se reproduzca la animación una sola vez
-
-        //Debug.Log(habSelected);
-
-        if (Input.GetKeyUp(CambiaHabKey) && !reloading)
+        if (!changingHab && !cambiarBala.changing)
         {
-            CambioHabAudio.Play(0);
-            StartCoroutine(TiempoCambioHab()); // Para luego en el script de RayShooter cancelar poder disparar mientras cambia cartucho
-            anim.SetBool("CambioCartucho", true);
-
-            if(habSelected < numHabilidades)
+            string luzAntigua = "", luzNueva = "";
+            switch (antigua)
             {
-                habSelected += 1;
+                case "Impulso":
+                    luzAntigua = constantes.LUZ_AZUL;
+                    break;
+                case "Teletransporte":
+                    luzAntigua = constantes.LUZ_MORADO;
+                    break;
+                default:
+                    throw new Exception("El string antigua no contiene ningÃºn valor que corresponda a los tipos de bala");
             }
-            else
+            switch (nueva)
             {
-                habSelected = 1;
+                case "Impulso":
+                    luzNueva = constantes.LUZ_AZUL;
+                    break;
+                case "Teletransporte":
+                    luzNueva = constantes.LUZ_MORADO;
+                    break;
+                default:
+                    throw new Exception("El string nueva no contiene ningÃºn valor que corresponda a los tipos de bala");
             }
-
-            if (habSelected == 1) // Cambiamos a Impulso
-            {
-                anim.SetBool("Luz_Morado", false);
-                anim.SetBool("Luz_Azul", true);
-            }
-
-            if (habSelected == 2) // Cambiamos a Tele
-            {
-                anim.SetBool("Luz_Azul", false);
-                anim.SetBool("Luz_Morado", true);
-            }
+            anim.SetBool(constantes.CAMBIO_CARTUCHO, true); // Por defecto desactivado, para que si m?s abajo lo activamos que se reproduzca la animaci?n una sola vez
+            StartCoroutine(TiempoCambioHab());
+            anim.SetBool(luzAntigua, false);
+            anim.SetBool(luzNueva, true);
         }
     }
 
     IEnumerator TiempoCambioHab()
     {
         changingHab = true;
-        yield return new WaitForSeconds(1f);
+        CambioHabAudio.Play(0);
+        yield return new WaitForSeconds(constantes.TIEMPO_DURACION_CAMBIO_BALA);
         changingHab = false;
     }
 }
