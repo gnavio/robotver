@@ -12,8 +12,6 @@ public class ControlHabilidad : MonoBehaviour
     [HideInInspector] public int habSelected;
     [SerializeField] AudioSource CambioHabAudio;
     [HideInInspector] public bool changingHab;
-    private int numHabilidades = 2;
-    private bool reloading;
 
     void Start()
     {
@@ -23,50 +21,6 @@ public class ControlHabilidad : MonoBehaviour
     public void NoHacerNada()
     {
         anim.SetBool("CambioCartucho", false); // Por defecto desactivado, para que si m?s abajo lo activamos que se reproduzca la animaci?n una sola vez
-    }
-    /*
-    void CambiaHabilidad()
-    {
-        anim.SetBool("CambioCartucho", false); // Por defecto desactivado, para que si m?s abajo lo activamos que se reproduzca la animaci?n una sola vez
-
-        //Debug.Log(habSelected);
-
-        if (Input.GetKeyUp(CambiaHabKey) && !reloading)
-        {
-            CambioHabAudio.Play(0);
-            StartCoroutine(TiempoCambioHab()); // Para luego en el script de RayShooter cancelar poder disparar mientras cambia cartucho
-            anim.SetBool("CambioCartucho", true);
-
-            if(habSelected < numHabilidades)
-            {
-                habSelected += 1;
-            }
-            else
-            {
-                habSelected = 1;
-            }
-
-            if (habSelected == 1) // Cambiamos a Impulso
-            {
-                anim.SetBool("Luz_Morado", false);
-                anim.SetBool("Luz_Azul", true);
-            }
-
-            if (habSelected == 2) // Cambiamos a Tele
-            {
-                anim.SetBool("Luz_Azul", false);
-                anim.SetBool("Luz_Morado", true);
-            }
-        }
-    }
-    */
-
-    IEnumerator TiempoCambioHab()
-    {
-        changingHab = true;
-        CambioHabAudio.Play(0);
-        yield return new WaitForSeconds(1.5f);
-        changingHab = false;
     }
 
     public void CambioBala(string antigua, string nueva)
@@ -101,8 +55,13 @@ public class ControlHabilidad : MonoBehaviour
             anim.SetBool(luzAntigua, false);
             anim.SetBool(luzNueva, true);
         }
-        else {
-            int x = 1;
-        }
+    }
+
+    IEnumerator TiempoCambioHab()
+    {
+        changingHab = true;
+        CambioHabAudio.Play(0);
+        yield return new WaitForSeconds(constantes.TIEMPO_DURACION_CAMBIO_BALA);
+        changingHab = false;
     }
 }

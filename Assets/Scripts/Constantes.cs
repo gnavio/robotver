@@ -10,4 +10,6 @@ public class Constantes
         , LUZ_MORADO = "Luz_Morado"
         , LUZ_AZUL = "Luz_Azul"
         , CAMBIO_CARTUCHO = "CambioCartucho";
+
+    public readonly float TIEMPO_DURACION_CAMBIO_BALA = 1.5f;
 }

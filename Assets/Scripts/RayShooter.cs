@@ -25,6 +25,7 @@ public class RayShooter : MonoBehaviour
     [SerializeField] public TMPro.TMP_Text balasText;
 
     private Camera _camera;
+    private CambiarBala cambiarBala;
 
     [HideInInspector] public bool reloading = false;
 
@@ -48,18 +49,19 @@ public class RayShooter : MonoBehaviour
         if (!PauseMenu.GameIsPaused && !GameOver.GameIsOver && !NivelCompleto.GameIsOver)
         {
             changingHab = GameObject.Find("Player").GetComponent<ControlHabilidad>().changingHab;
+            cambiarBala = GameObject.Find("Player").GetComponent<CambiarBala>();
 
             anim.SetBool("Dispara", false);
 
             BalasUI();
             ReloadOverlay();
             
-            if (Input.GetKeyDown(ReloadKey) && balas < 6)
+            if (Input.GetKeyDown(ReloadKey) && balas < 6 && !cambiarBala.changing)
             {
                 StartCoroutine(Reload()); 
             }
 
-            if (Input.GetMouseButtonDown(0) && balas >= 1 && !reloading &&!changingHab)
+            if (Input.GetMouseButtonDown(0) && balas >= 1 && !reloading &&!changingHab && !cambiarBala.changing)
             {
                 anim.SetBool("Dispara", true);
                 shotAudio.Play(0);

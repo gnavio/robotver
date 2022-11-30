@@ -13,7 +13,6 @@ public class CambiarBala : MonoBehaviour
     private int NUM_HABILIDADES;
     public bool reloading, changing;
 
-    // Start is called before the first frame update
     void Start()
     {
         constantes = new Constantes();
@@ -25,7 +24,6 @@ public class CambiarBala : MonoBehaviour
         changing = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         CambioBala();
@@ -35,7 +33,7 @@ public class CambiarBala : MonoBehaviour
     IEnumerator CargandoBala()
     {
         changing = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(constantes.TIEMPO_DURACION_CAMBIO_BALA);
         changing = false;
     }
 

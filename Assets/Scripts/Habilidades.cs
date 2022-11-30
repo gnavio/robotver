@@ -8,6 +8,7 @@ using TMPro;
 public class Habilidades : MonoBehaviour
 {
     private CambiarBala cambiarBala;
+    private ControlHabilidad controlHabilidad;
     //Impulso
     [SerializeField] Transform orientation;
     [SerializeField] Animator anim;
@@ -35,68 +36,14 @@ public class Habilidades : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         cambiarBala = GetComponent<CambiarBala>();
+        controlHabilidad = GetComponent<ControlHabilidad>();
     }
-
-    /*
-    void CambiarPosicion()
-    {
-        if (Input.GetAxis(MOUSE_SCROLLWHEEL) != 0)
-        {
-            String antiguo = habilidades[posicion];
-            int cambio = Input.GetAxis(MOUSE_SCROLLWHEEL) > 0 ? 1 : -1;
-            if (cambio < 0) cambio = NUM_HABILIDADES - 1;
-            posicion = (posicion + cambio) % NUM_HABILIDADES;
-            String nuevo = habilidades[posicion];
-            Debug.Log("Cambio de posicion: " + posicion);
-        }
-    }
-
-    
-    // Update is called once per frame
-    void Update()
-    {
-        //Asociar variables de cartuchos a texto UI
-        cartuchosImpulsoTxt.text = cartuchosImpulso.ToString("0");
-        cartuchosTeletransporteTxt.text = cartuchosTeletransporte.ToString("0");
-
-        CambiarPosicion();
-        //Inicio Impulso
-        if (habilidades[posicion] == IMPULSO)
-        {
-            anim.SetBool("Impulso", false);
-
-            if (Input.GetKeyDown(DashKey) && cartuchosImpulso >= 1)
-            {
-                BlasterAudio.Play(0);
-                m_Rigidbody.AddForce(orientation.forward * -1 * dash);
-                cartuchosImpulso -= 1;
-                anim.SetBool("Impulso", true);
-                Debug.Log("ImpulsoTrue");
-                StartCoroutine(ImpulsoOverlay());
-            }
-        }
-        //Fin Impulso
-
-        //Inicio Teletransporte
-        if (habilidades[posicion] == TELETRANSPORTE) { 
-            GameObject game = GameObject.FindGameObjectWithTag("BulletTP");
-            if (game == null && Input.GetKeyDown(DashKey) && cartuchosTeletransporte > 0)
-            {
-                cartuchosTeletransporte--;
-                GameObject teleportBullet = bullet;
-                teleportBullet = GameObject.Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-                teleportBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, yOffset, 0));
-                teleportBullet.GetComponent<Rigidbody>().AddForce(orientation.forward * zOffset);
-            }
-        }
-        //Fin Teletransporte
-    }
-    */
 
     public void Disparar(String balas)
     {
         anim.SetBool("Impulso", false);
-        if (Input.GetKeyDown(DashKey))
+        if (Input.GetKeyDown(DashKey) && !cambiarBala.changing
+            && !controlHabilidad.changingHab && !cambiarBala.reloading)
         {
             switch (balas)
             {
