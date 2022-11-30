@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +27,8 @@ public class RayShooter : MonoBehaviour
 
     private Camera _camera;
     private CambiarBala cambiarBala;
-
+    private string[] balasHab;
+    private int posicion = 0;
     [HideInInspector] public bool reloading = false;
 
     bool ocultaOverlay = false;
@@ -42,6 +44,7 @@ public class RayShooter : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked; // deja el rat�n en el centro de la ventana
         Cursor.visible = false;
+
     }
     void Update()
     {  
@@ -115,8 +118,11 @@ public class RayShooter : MonoBehaviour
     IEnumerator HitPrefabIndicator(RaycastHit hit)
     {
         GameObject HitPrefabSelected;
+        balasHab = cambiarBala.balas;
+        posicion = cambiarBala.posicion;
 
-        if (GameObject.Find("Player").GetComponent<ControlHabilidad>().habSelected == 2)
+        /*
+        if (balasHab[posicion] == "Teletransporte")
         {
             HitPrefabSelected = HitPrefabMorado;
         }
@@ -124,7 +130,19 @@ public class RayShooter : MonoBehaviour
         {
             HitPrefabSelected = HitPrefab;
         }
+        */
 
+        switch (balasHab[posicion])
+        { 
+          case "Teletransporte":
+                HitPrefabSelected = HitPrefabMorado;
+                break;
+          case "Impulso":
+                HitPrefabSelected = HitPrefab;
+                break;
+          default: throw new Exception("balasHab[posicion] no corresponde con ninguna de las opciones");
+
+        }
         GameObject InstanceHit = Instantiate(
                 HitPrefabSelected,
                 hit.point + (hit.normal * 0.1f),
@@ -150,14 +168,30 @@ public class RayShooter : MonoBehaviour
     IEnumerator ShotOverlay()
     {
         GameObject shotOverlaySelected;
+        balasHab = cambiarBala.balas;
+        posicion = cambiarBala.posicion;
 
-        if (GameObject.Find("Player").GetComponent<ControlHabilidad>().habSelected == 2)
+        /*
+        if (balasHab[posicion] == "Teletransporte")
         {
             shotOverlaySelected = OverlayPrefabMorado;
         }
         else
         {
             shotOverlaySelected = OverlayPrefab;
+        }
+        */
+
+        switch (balasHab[posicion])
+        {
+            case "Teletransporte":
+                shotOverlaySelected = OverlayPrefabMorado;
+                break;
+            case "Impulso":
+                shotOverlaySelected = OverlayPrefab;
+                break;
+            default: throw new Exception("balasHab[posicion] no corresponde con ninguna de las opciones");
+
         }
 
         GameObject overlay = Instantiate(shotOverlaySelected, overlayPos.transform.position, overlayPos.transform.rotation);
