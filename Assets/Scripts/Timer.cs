@@ -110,6 +110,7 @@ public class Timer : MonoBehaviour
                 currentTime = startingTime;
 
                 // AQU� HAY QUE PONER QU� PASA SI SE ACABA EL TIEMPO
+                gameManager.GameOver();
             }
         }
         
