@@ -9,7 +9,8 @@ public class Habilidades : MonoBehaviour
 {
     private CambiarBala cambiarBala;
     private ControlHabilidad controlHabilidad;
-    //Impulso
+
+    [Header("Impulso")]
     [SerializeField] Transform orientation;
     [SerializeField] Animator anim;
     [SerializeField] GameObject OverlayPrefab;
@@ -22,7 +23,7 @@ public class Habilidades : MonoBehaviour
     [Header("Tecla")]
     [SerializeField] KeyCode DashKey = KeyCode.Mouse1;
 
-    //Teletransporte
+    [Header("Teletransporte")]
     public GameObject bullet;
     public GameObject firePoint;
     [SerializeField] private Camera _camera;
@@ -30,6 +31,8 @@ public class Habilidades : MonoBehaviour
     [SerializeField] private float zOffset;
     public int cartuchosTeletransporte;
     [SerializeField] public TMPro.TMP_Text cartuchosTeletransporteTxt;
+    [SerializeField] GameObject TelepEffectPrefab;
+    [HideInInspector] public bool teleportEffect = false;
 
 
     void Start()
@@ -37,6 +40,13 @@ public class Habilidades : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         cambiarBala = GetComponent<CambiarBala>();
         controlHabilidad = GetComponent<ControlHabilidad>();
+    }
+
+    void Update()
+    {
+        cartuchosImpulsoTxt.text = cartuchosImpulso.ToString("0");
+        cartuchosTeletransporteTxt.text = cartuchosTeletransporte.ToString("0");
+        StartCoroutine(TeleportEffect());
     }
 
     public void Disparar(String balas)
@@ -102,5 +112,19 @@ public class Habilidades : MonoBehaviour
         overlay.transform.parent = overlayPos.transform;
         yield return new WaitForSeconds(1);
         Destroy(overlay);
+    }
+
+    IEnumerator TeleportEffect()
+    {
+        if(teleportEffect)
+        {
+            GameObject InstanceEffect = Instantiate(TelepEffectPrefab);
+            InstanceEffect.transform.position = GameObject.Find("Player").transform.position;
+            InstanceEffect.transform.parent = GameObject.Find("Player").transform;
+            teleportEffect = false;
+
+            yield return new WaitForSeconds(1);
+            Destroy(InstanceEffect);
+        }    
     }
 }
