@@ -10138,6 +10138,7 @@ GameObject:
   - component: {fileID: 950780594}
   - component: {fileID: 950780597}
   - component: {fileID: 950780598}
+  - component: {fileID: 950780599}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -10352,6 +10353,20 @@ MonoBehaviour:
   zOffset: 2000
   cartuchosTeletransporte: 3
   cartuchosTeletransporteTxt: {fileID: 148161267}
+--- !u!114 &950780599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950780588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fa12647b3d74cfa8547fb6759cb8b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reloading: 0
+  changing: 0
 --- !u!4 &965588225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 748031474243973070, guid: 98ab0cf81c5a060419df7ba8c12447a3, type: 3}

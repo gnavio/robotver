@@ -6,6 +6,7 @@ using UnityEngine;
 public class ControlHabilidad : MonoBehaviour
 {
     private Constantes constantes = new Constantes();
+    private CambiarBala cambiarBala;
     [SerializeField] public Animator anim;
     [SerializeField] KeyCode CambiaHabKey = KeyCode.Q;
     [HideInInspector] public int habSelected;
@@ -13,6 +14,11 @@ public class ControlHabilidad : MonoBehaviour
     [HideInInspector] public bool changingHab;
     private int numHabilidades = 2;
     private bool reloading;
+
+    void Start()
+    {
+        cambiarBala = GetComponent<CambiarBala>();
+    }
 
     public void NoHacerNada()
     {
@@ -65,7 +71,7 @@ public class ControlHabilidad : MonoBehaviour
 
     public void CambioBala(string antigua, string nueva)
     {
-        if (!changingHab)
+        if (!changingHab && !cambiarBala.changing)
         {
             string luzAntigua = "", luzNueva = "";
             switch (antigua)

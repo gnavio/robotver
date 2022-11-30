@@ -7,6 +7,7 @@ using TMPro;
 
 public class Habilidades : MonoBehaviour
 {
+    private CambiarBala cambiarBala;
     //Impulso
     [SerializeField] Transform orientation;
     [SerializeField] Animator anim;
@@ -33,6 +34,7 @@ public class Habilidades : MonoBehaviour
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        cambiarBala = GetComponent<CambiarBala>();
     }
 
     /*
@@ -93,23 +95,26 @@ public class Habilidades : MonoBehaviour
 
     public void Disparar(String balas)
     {
-        switch (balas)
+        anim.SetBool("Impulso", false);
+        if (Input.GetKeyDown(DashKey))
         {
-            case "Impulso":
-                DispararImpulso();
-                break;
-            case "Teletransporte":
-                DispararTeletransporte();
-                break;
-            default:
-                throw new Exception("El string bala no contiene ningún valor que corresponda a los tipos de bala");
+            switch (balas)
+            {
+                case "Impulso":
+                    DispararImpulso();
+                    break;
+                case "Teletransporte":
+                    DispararTeletransporte();
+                    break;
+                default:
+                    throw new Exception("El string bala no contiene ningún valor que corresponda a los tipos de bala");
+            }
         }
     }
 
     private void DispararImpulso()
     {
-        anim.SetBool("Impulso", false);
-        if (Input.GetKeyDown(DashKey) && cartuchosImpulso >= 1)
+        if (cartuchosImpulso >= 1)
         {
             BlasterAudio.Play(0);
             m_Rigidbody.AddForce(orientation.forward * -1 * dash);
@@ -124,7 +129,7 @@ public class Habilidades : MonoBehaviour
     private void DispararTeletransporte()
     {
         GameObject game = GameObject.FindGameObjectWithTag("BulletTP");
-        if (game == null && Input.GetKeyDown(DashKey) && cartuchosTeletransporte > 0)
+        if (game == null && cartuchosTeletransporte > 0)
         {
             cartuchosTeletransporte--;
             GameObject teleportBullet = bullet;
