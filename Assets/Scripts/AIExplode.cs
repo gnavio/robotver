@@ -18,6 +18,7 @@ public class AIExplode : MonoBehaviour
         GameObject DieParticle = Instantiate(EnemyExplode);
         DieParticle.transform.position = transform.position;
         Destroy(transform.GetChild(0).gameObject);
+        Destroy(gameObject);
         gameObject.GetComponent<AIRayShoot>().enabled = false;
         yield return new WaitForSeconds(1);
         Destroy(DieParticle);
