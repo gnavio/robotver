@@ -167,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        transform.position = lastCheckPointPosition;
+       // transform.position = lastCheckPointPosition;
     }
 
 
