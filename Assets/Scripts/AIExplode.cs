@@ -17,9 +17,8 @@ public class AIExplode : MonoBehaviour
         SumaKilledEnemies();
         GameObject DieParticle = Instantiate(EnemyExplode);
         DieParticle.transform.position = transform.position;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
-        gameObject.GetComponent<SphereCollider>().enabled = false;
-        Destroy(gameObject.transform.Find("Eye"));
+        Destroy(transform.GetChild(0).gameObject);
+        gameObject.GetComponent<AIRayShoot>().enabled = false;
         yield return new WaitForSeconds(1);
         Destroy(DieParticle);
         Destroy(gameObject);
