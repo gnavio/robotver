@@ -29386,7 +29386,7 @@ MonoBehaviour:
   fov: 70
   wallRunfov: 70
   wallRunfovTime: 10
-  camTilt: 10
+  camTilt: 20
   camTiltTime: 10
   anim: {fileID: 939871241}
 --- !u!114 &950780594
@@ -29481,7 +29481,7 @@ MonoBehaviour:
   overlayPos: {fileID: 758525018}
   BlasterAudio: {fileID: 2100668071}
   dash: 1200
-  cartuchosImpulso: 3
+  cartuchosImpulso: 999
   cartuchosImpulsoTxt: {fileID: 93901724}
   DashKey: 324
   bullet: {fileID: 7906674128009911551, guid: 1fadcd47e9b9a4e48b8c5448a2cd2b74, type: 3}
@@ -29489,7 +29489,7 @@ MonoBehaviour:
   _camera: {fileID: 1781291236}
   yOffset: 0
   zOffset: 2000
-  cartuchosTeletransporte: 0
+  cartuchosTeletransporte: 999
   cartuchosTeletransporteTxt: {fileID: 148161267}
   TelepEffectPrefab: {fileID: 5119914425796568339, guid: 6aae554ca6e4a164c899e598902a0bc2, type: 3}
   teleportEffect: 0
@@ -59198,6 +59198,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982411459}
   m_CullTransparentMesh: 1
+--- !u!1 &1983089028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2017156629366382333, guid: 94ddeff3107bb5a4d96a45638d0f5bde, type: 3}
+  m_PrefabInstance: {fileID: 1625715248}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1987965225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63095,6 +63100,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1204064088721015879, guid: 94ddeff3107bb5a4d96a45638d0f5bde, type: 3}
   m_PrefabInstance: {fileID: 1625715248}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2145336286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983089028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4147b02540f51a448da632a0d12a834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goal: {fileID: 950780588}
+  speed: 5
 --- !u!1 &2146580597
 GameObject:
   m_ObjectHideFlags: 0
