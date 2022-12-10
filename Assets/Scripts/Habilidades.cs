@@ -76,6 +76,7 @@ public class Habilidades : MonoBehaviour
         if (cartuchosImpulso >= 1)
         {
             BlasterAudio.Play(0);
+            //m_Rigidbody.velocity = Vector3.zero;
             m_Rigidbody.AddForce(orientation.forward * -1 * dash);
             cartuchosImpulso -= 1;
             anim.SetBool("Impulso", true);

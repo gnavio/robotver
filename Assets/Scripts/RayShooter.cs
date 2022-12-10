@@ -73,7 +73,7 @@ public class RayShooter : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
-                    //Debug.Log("Hit " + hit.point + " (" + hit.transform.gameObject.name + ")");
+                    Debug.Log("Hit " + hit.point + " (" + hit.transform.gameObject.name + ")");
                     balas--;
                     StartCoroutine(ShotOverlay());
 
