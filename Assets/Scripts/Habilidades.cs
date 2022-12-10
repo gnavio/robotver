@@ -33,6 +33,8 @@ public class Habilidades : MonoBehaviour
     [SerializeField] public TMPro.TMP_Text cartuchosTeletransporteTxt;
     [SerializeField] GameObject TelepEffectPrefab;
     [HideInInspector] public bool teleportEffect = false;
+    [SerializeField] AudioSource ShotTeleportAudio;
+    [SerializeField] AudioSource TeleportEffectAudio;
 
 
     void Start()
@@ -93,6 +95,8 @@ public class Habilidades : MonoBehaviour
             teleportBullet = GameObject.Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
             teleportBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, yOffset, 0));
             teleportBullet.GetComponent<Rigidbody>().AddForce(orientation.forward * zOffset);
+            anim.SetBool("Impulso", true);
+            ShotTeleportAudio.Play(0);
         }
     }
 
@@ -121,6 +125,7 @@ public class Habilidades : MonoBehaviour
             GameObject InstanceEffect = Instantiate(TelepEffectPrefab);
             InstanceEffect.transform.position = GameObject.Find("Player").transform.position;
             InstanceEffect.transform.parent = GameObject.Find("Player").transform;
+            TeleportEffectAudio.Play(0);
             teleportEffect = false;
 
             yield return new WaitForSeconds(1);

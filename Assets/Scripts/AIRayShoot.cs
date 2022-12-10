@@ -12,6 +12,11 @@ public class AIRayShoot : MonoBehaviour
     float rotSpeed = 2;
     float speed = 15;
     private bool isReachable;
+    public GameObject ShotEffectEnemy;
+    public GameObject ParticleSpot;
+
+    [SerializeField] AudioSource EnemyShotAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +29,9 @@ public class AIRayShoot : MonoBehaviour
     {
         GameObject shell = Instantiate(bullet, turret.transform.position, turret.transform.rotation);
         shell.GetComponent<Rigidbody>().velocity = speed * gunBase.forward;
+        EnemyShotAudio.Play(0);
+        GameObject particleEffect = Instantiate(ShotEffectEnemy);
+        particleEffect.transform.position = ParticleSpot.transform.position;
     }
     
     // Update is called once per frame
