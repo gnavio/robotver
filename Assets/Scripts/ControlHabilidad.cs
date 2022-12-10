@@ -8,7 +8,6 @@ public class ControlHabilidad : MonoBehaviour
     private Constantes constantes = new Constantes();
     private CambiarBala cambiarBala;
     [SerializeField] public Animator anim;
-    [SerializeField] KeyCode CambiaHabKey = KeyCode.Q;
     [HideInInspector] public int habSelected;
     [SerializeField] AudioSource CambioHabAudio;
     [HideInInspector] public bool changingHab;

@@ -12,19 +12,23 @@ public class PlayerLook : MonoBehaviour
 
     [SerializeField] Transform cam = null;
     [SerializeField] Transform orientation = null;
+    [SerializeField] Transform playerTransform = null;
 
     float mouseX;
     float mouseY;
 
     float multiplier = 0.01f;
 
-    float xRotation;
+    float xRotation = 0f;
     float yRotation;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        yRotation = playerTransform.eulerAngles.y; // GameObject.Find("Player&Camera").transform.rotation.y;
+
     }
 
     private void Update()

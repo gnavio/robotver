@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     float playerHeight = 2f;
 
     [SerializeField] Animator anim;
+    [SerializeField] Animator animCol;
 
     [SerializeField] Transform orientation;
 
@@ -88,6 +89,15 @@ public class PlayerMovement : MonoBehaviour
             MyInput();
             ControlDrag();
             ControlSpeed();
+
+            if (!isGrounded && rb.velocity.y > 0)
+            {
+                animCol.SetBool("ColAereo", true);
+            }
+            else
+            {
+                animCol.SetBool("ColAereo", false);
+            }
 
             anim.SetBool("Aterrizar", false);
 
