@@ -236,7 +236,7 @@ public class RayShooter : MonoBehaviour
 
     void BalasUI()
     {
-        balasText.text = balas.ToString("0" + " / ∞");
+        balasText.text = balas.ToString("0");
     }
 
     void ReloadOverlay()
