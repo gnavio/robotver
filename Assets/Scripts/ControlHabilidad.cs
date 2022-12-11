@@ -112,7 +112,7 @@ public class ControlHabilidad : MonoBehaviour
 
         if (teleportActivado)
         {
-            if (cartuchosImpulso < 1)
+            if (cartuchosTeletransporte < 1)
             {
                 //Debug.Log("No quedan Teleports");
                 TeleportReady.SetActive(false);
