@@ -73,7 +73,7 @@ public class RayShooter : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
-                    Debug.Log("Hit " + hit.point + " (" + hit.transform.gameObject.name + ")");
+                   // Debug.Log("Hit " + hit.point + " (" + hit.transform.gameObject.name + ")");
                     balas--;
                     StartCoroutine(ShotOverlay());
 
@@ -226,7 +226,7 @@ public class RayShooter : MonoBehaviour
     */
         void OnGUI()
     { // se ejecuta despu�s de dibujar el frame del juego
-        int size = 30;
+        int size = 35;
         float posX = _camera.pixelWidth / 2 - size / 4;
         float posY = _camera.pixelHeight / 2 - size / 2;
         
@@ -236,7 +236,7 @@ public class RayShooter : MonoBehaviour
 
     void BalasUI()
     {
-        balasText.text = balas.ToString("0" + " / ∞");
+        balasText.text = balas.ToString("0");
     }
 
     void ReloadOverlay()

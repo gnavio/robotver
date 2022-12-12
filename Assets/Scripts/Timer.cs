@@ -15,15 +15,11 @@ public class Timer : MonoBehaviour
     float currentTime;
     [SerializeField] public float startingTime = 20f;
     [SerializeField] public TMPro.TMP_Text countdownText;
-    [SerializeField] public TMPro.TMP_Text finalTimeText;
 
     [HideInInspector] public bool timerPrepActivado = true;
     [HideInInspector] public bool timerActivado = false;
 
-    [HideInInspector] public int killedEnemies = 0;
-    [SerializeField] public TMPro.TMP_Text killsText;
-    public int requiredKills;
-    
+    [SerializeField] public Level1Manager level1Manager;
     // Pantalla Nivel Completo
     public static float finalTimeLevel;
     GameManager gameManager;
@@ -39,15 +35,12 @@ public class Timer : MonoBehaviour
         countdownText.gameObject.SetActive(false);
         currentTime = startingTime;
 
-        finalTimeText.gameObject.SetActive(false);
-
         // Pantalla Nivel Completo
         gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
     {
-        SetKillsText();
 
         if (timerPrepActivado && !PauseMenu.GameIsPaused)
         {
@@ -86,19 +79,16 @@ public class Timer : MonoBehaviour
             countdownText.text = currentTime.ToString("0.00");
 
             // SI COMPLETAS LA MISI�N...
-            if (killedEnemies >= requiredKills)
+            if (level1Manager.nivelCompletado)
             {
                 float finalTime = startingTime - currentTime; 
                 
                 //// Pantalla Nivel Completo ///////
-                finalTimeLevel = finalTime; 
+                finalTimeLevel = finalTime;
                 gameManager.NivelCompleto();
                 ///////////////////////////////////
                 
                 countdownText.gameObject.SetActive(false); // desactivamos timer gameObject
-
-                finalTimeText.text = finalTime.ToString("0.00");
-                finalTimeText.gameObject.SetActive(true); // activamos finalTime gameObject
 
                 timerActivado = false;
             }
@@ -116,9 +106,5 @@ public class Timer : MonoBehaviour
         
     }
 
-    void SetKillsText()
-    {
-        killsText.text = killedEnemies + " / " + requiredKills;
-    }
 }
 

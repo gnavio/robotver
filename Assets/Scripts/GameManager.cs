@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 
     void Update()
     {
-        // Reiniciar el nivel actual con la tecla N
+        // Reiniciar el nivel actual con la tecla N 
         if (Input.GetKeyDown(KeyCode.N))
         {
             SceneManager.LoadScene(actualSceneName);
