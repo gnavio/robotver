@@ -18,6 +18,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject Mission1;
     [SerializeField] GameObject Mission2;
     [SerializeField] GameObject TutorialCompleted;
+    [SerializeField] GameObject Mission3;
 
     [Header("Videos")]
     [SerializeField] GameObject CanvasVideo;
@@ -39,6 +40,7 @@ public class Tutorial : MonoBehaviour
         Mission1.SetActive(true);
         Mission2.SetActive(false);
         TutorialCompleted.SetActive(false);
+        Mission3.SetActive(false);
         ObjetosFinTutorial.SetActive(false);
 
         habilidades.cartuchosImpulso = 0;
@@ -48,13 +50,14 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(EnemiesTutorial.transform.childCount);
+        //Debug.Log(EnemiesTutorial.transform.childCount);
 
         if (EnemiesTutorial.transform.childCount <= 0)
         {
             Debug.Log("Tutorial Completado");
             Mission2.SetActive(false);
             TutorialCompleted.SetActive(true);
+            Mission3.SetActive(true);
             ObjetosFinTutorial.SetActive(true);
         }
 
