@@ -49,6 +49,17 @@ public class Habilidades : MonoBehaviour
         cartuchosImpulsoTxt.text = cartuchosImpulso.ToString("0");
         cartuchosTeletransporteTxt.text = cartuchosTeletransporte.ToString("0");
         StartCoroutine(TeleportEffect());
+
+        if(cartuchosTeletransporte > 0)
+        {
+            anim.SetBool("TeleportAvailable", true);
+        } else { anim.SetBool("TeleportAvailable", false); }
+
+        if (cartuchosImpulso > 0)
+        {
+            anim.SetBool("ImpulseAvailable", true);
+        }
+        else { anim.SetBool("ImpulseAvailable", false); }
     }
 
     public void Disparar(String balas)
