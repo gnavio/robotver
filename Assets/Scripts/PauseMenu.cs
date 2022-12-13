@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenu;
     public GameObject settingsMenu;
-    public string menuSceneName = "menurobotver";
+    public string menuSceneName = "MainMenu";
     [SerializeField] AudioSource countdownAudio;
 
     void Update()
