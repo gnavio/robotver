@@ -6,7 +6,7 @@ public class AIShellDestroyed : MonoBehaviour
 {
     public GameObject explotion;
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag != null && col.gameObject.tag != "Enemy")
         {
