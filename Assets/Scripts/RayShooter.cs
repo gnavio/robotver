@@ -226,7 +226,7 @@ public class RayShooter : MonoBehaviour
     */
         void OnGUI()
     { // se ejecuta despu�s de dibujar el frame del juego
-        int size = 35;
+        int size = 30;
         float posX = _camera.pixelWidth / 2 - size / 4;
         float posY = _camera.pixelHeight / 2 - size / 2;
         
